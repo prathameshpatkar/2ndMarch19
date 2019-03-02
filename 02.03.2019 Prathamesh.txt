@@ -1,0 +1,60 @@
+﻿(get-process).Company
+getprocess|format-table processname,id
+get-process|format-table processname,id
+Get-Command [-includeusername]
+Get-Process -IncludeUserName
+Get-Command Get-ChildItem
+Get-Command *child*
+get-command -noun childitem
+get-help Get-ChildItem -online
+get-childitem -path C:\Android
+get-childitem C:\Windows\*.dll |Measure-Object
+(Get-ChildItem C:\windows -Include *.dll |Measure-Object).Count
+dir
+ls
+Get-Alias
+no
+get-help Get-Alias -Examples
+get-help New-Alias -Examples
+New-Alias -name no
+New-Alias -Name no -Value notepad
+no
+get-help new-alias -Online
+no
+Get-Alias
+New-Alias -name gpss -value [Get-Process]
+gpss
+New-Alias -name gpsss -value Get-Process
+gpsss
+(New-Alias -name gssss -Force -value get-services).DisplayName
+gssss
+New-Alias -name gpssss -value get-services
+gssss
+(New-Alias -name gssss -Force -value get-services).DisplayName
+New-Alias -name gssss -Force -value get-services | DisplayName
+Get-Help New-Alias -online
+New-Alias -name gpssss -value get-services|displayname
+New-Alias -name gpssss -value get-services
+get-command -noun file
+Get-Command -noun psprovider
+Set-Location HKLM:
+get-childitem HKLM:
+dir hklm:
+set-location C:
+Set-location env:
+Get-ChildItem env:
+Get-Item temp
+Get-Item path
+get-item .\path
+get-childitem cert:
+Get-Item Cert:\CurrentUser
+Get-Item HKLM:\SOFTWARE
+Get-ItemProperty HKLM:\SOFTWARE
+get-help  Get-ItemProperty -Online
+Get-ItemProperty HKLM:\SYSTEM
+Get-ItemProperty C:\Windows | fl *
+Get-ItemProperty C:\Windows | Get-Member
+Get-Item env:
+get-help Get-Item -Online
+get-help New-Item -online
+new-item -name "myname" -Value "Prathamesh"
