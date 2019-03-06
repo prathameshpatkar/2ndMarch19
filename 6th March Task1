@@ -1,0 +1,11 @@
+set-location HKCU:\software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+get-itemproperty -path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\
+set-itemproperty -path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\  -name DontPrettyPath -value 1
+set-location C:
+new-item -name Demo -itemtype "directory"
+set-location H:\demo
+new-item -name Test.txt -itemtype "file"
+new-item -name Test.txt -value 1
+set-location C:
+get-childitem
+get-childitem -name Temp
