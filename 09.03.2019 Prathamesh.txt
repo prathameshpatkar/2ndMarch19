@@ -1,0 +1,74 @@
+#region services
+get-service
+#endregion
+Start-Transcript
+Get-Member
+Get-ChildItem
+Start-Transcript
+Get-Command -Noun date
+get-date
+get-help get-date -online
+get-date -DisplayHint Date
+get-date -Format dd/MM/yyyy
+get-date -Format yyyy/MM/dd
+get-date -Format yy/MM/dd
+get-date -DisplayHint Time -Format hh/mm/ss
+get-date -Format hh:mm:ss
+get-date -Format "dd'.'mm'.'yy"
+$myservices= get-service
+$myservices
+$myservices | Get-Member
+$myservices.GetType()
+Get-Member -InputObject $myservices
+$myarray=@(1,"2","prathamesh",4)
+$myarray | Get-Member
+$myarray.GetType()
+Get-Member -InputObject $myarray
+$myarray[0]=4
+Get-Member -InputObject $myarray
+$myarray.Add(0)
+[System.Collections.ArrayList]$mynewarray=@(1,2,3)
+$mynewarray
+$mynewarray.Add(4)
+$mynewarray.Count
+$mynewarray[-2]
+$mynewa = @(1,2,3)
+$value=$mynewa.IndexOf(1)
+$mynewa[$value]='abc'
+$mynewa
+$array=@("1","Sam","2","Sam","4")
+$array
+$array.IndexOf("Sam")
+$value=$array.IndexOf("Sam")
+$array[$value]='ijk'
+$array
+$value=$array.IndexOf("Sam")
+$array[$value]='ijk'
+$array
+get-help restart-service -online
+get-process | Get-Member
+Get-Help Stop-Process -Online
+get-process | Export-Csv -path C:\Temp\process.csv
+$myprocess = Import-Csv -path C:\Temp\process.csv
+$myprocess | Get-Member
+$myprocess | stop-process -WhatIf
+$mynewprocess = Import-Csv -Path 'C:\Temp\process 1.csv'
+$mynewprocess | Get-Member
+$mynewprocess | Stop-process -WhatIf
+$mynewpro = Import-Csv -path 'C:\Temp\process 2.csv'
+$mynewpro | Get-Member
+$mynewpro | Stop-process -WhatIf
+Trace-Command -name ParameterBinding -Expression{$mynewpro | Stop-Process -WhatIf} -PSHost
+Get-Service | stop-process -WhatIf
+$myhash=@{Name="Prathamesh" ; Company='Buro'}
+$myhash
+get-service | Get-Member
+get-service | select @{label='Name1' ; e={$_.name}}
+get-help about_operators
+get-service| Where-Object{$_.Name -eq "BITS"}
+get-service |Where-Object{$_.name -like "win*"}
+Get-Process|Where-Object{$_.Company -notlike "*Microsoft*"}
+Get-Process|Where-Object{$_.WorkingSet -lt "100000"}
+Get-Process| select @{label='PM';e={$_.PM/1MB}},* | Sort-Object -Property PM -Descending | select -first 10
+Get-Process| select @{label='PM';e={$_.PM/1MB}},*
+Get-Process| select @{label='PM';e={$_.PM/1MB}},* | Sort-Object -Property PM
