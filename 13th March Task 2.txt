@@ -1,0 +1,24 @@
+1. What will be the output of 
+
+get-service | export-csv services.csv | out-file
+
+Ans : This will export all the services to csv file in the location C:\Windows\system32\
+
+2. How to create a pipe delimited file instead of comma-seperated file
+
+Ans : import-csv -Path C:\Users\ppatkar\Desktop\services.csv | export-csv -path C:\Users\ppatkar\Desktop\services1.csv -Delimiter "|"
+
+3. Check out is there any way we can eliminate the #information about the type of object from the top of the exported .csv file
+
+Ans:import-csv -Path C:\Users\ppatkar\Desktop\services.csv | export-csv -path C:\Users\ppatkar\Desktop\services2.csv -NoTypeInformation
+
+4. Will this provide the expected output Get-ADComputer -Filter* | Get-HotFix
+
+Ans: I believe the first command will give output of the list of computer listed in AD. As there is no parameter for get-hotfix which accepts the input as BY value it would search for parameter which accepts inoput BY propertyname which is  -ComputerName. Hence I think the above command won't work as it will ask for parameter. Like below :
+
+
+Get-ADComputer -Filter* | Get-HotFix -Name 
+
+5.Write a command to list the processes from a list of computer from any txt file
+
+Ans: I am not sure of this.
