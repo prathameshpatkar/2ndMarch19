@@ -1,0 +1,84 @@
+"This is restarted by prathamesh" -match "(.+by)(.+)"
+$matches[2]
+while ( Test-Connection -ComputerName "NTMS_PC8")
+{
+Write-host "Server is up"
+}
+for($i=0;$i -le 25; $i++)
+{
+[char](65+$i)
+}
+Start-Transcript
+$mynewarray=@(1,2,"Prathamesh",3,4,"text")
+Get-Member -InputObject $mynewarray
+$mynewarray | Get-Member
+"1" | Get-Member
+("1").ToInt32
+("1").ToInt32($null) | Get-Member
+[int]$myvalue="1" #converts value to integer
+[int]$myvalue="Prathamesh" #gives error
+get-help Get-HotFix -online
+Get-ChildItem | Where-Object {$_.Name -match "[0-9][0-9]"}
+Get-ChildItem | select name |Select-String -Pattern "[0-9]{2}"
+Get-ChildItem -Path C:\Windows | select name |Select-String -Pattern "[0-9]{2}"
+$newfiles= get-childitem -path C:\Windows
+foreach($ff in $newfiles)
+{
+if($ff.name -match "^[0-9]{2}$")
+{
+$ff.name | Out-File -filepath  C:\Windows -Append
+}
+}
+
+Get-ChildItem -Path C:\Windows | ? {$_.Name -match "[0-9][0-9]"} # ? can be used instead of where-object
+Select-String -Path C:\Windows\WindowsUpdate.log -pattern "Regulation[:][/w][{][0-9]{3}[a-z]{3}[0-9][a-z]"
+$lp= get-content  -Path C:\Windows\WindowsUpdate.log
+select-string -Pattern
+get-content  -Path C:\Windows\WindowsUpdate.log | select-string -Pattern "Regulation:\s{[0-9a-z]{8}[0-9a-z]{4}[0-9a-z]{4}[0-9a-z]{4}[0-9a-z]{12}" #Incorrect statement
+get-content  -Path C:\Windows\WindowsUpdate.log | Where-Object{$_ -match "Regulation:\s{[0-9a-z]{8}[-][0-9a-z]{4}[-][0-9a-z]{4}[-][0-9a-z]{4}[-][0-9a-z]{12}"} #Correct statement
+[char](65)=A
+for($i=65;$i-lt91;$i++)
+{
+[char]$i
+}
+$services=get-service
+foreach($service in $services)
+{
+
+write-host "The Display name of the service
+ '$($service.name)' is '$($service.displayname)'"
+} # Variables should be used in single quotes
+foreach($service in $services)
+{
+
+$out=" The display name of {0} is {1}" -f $service.Name, $service.DisplayName
+$out
+} # -f is for formatting
+"{0:n3}" -f 123.4567
+$time= Get-Date -DisplayHint Time
+"{0:hh}" -f $time
+Get-Help New-Object -Online
+get-help Add-Member -Online
+$var=New-Object -TypeName PScustomobject
+$var | Add-Member -Name fname -membertype "Noteproperty" -value "Prathamesh"
+$var | Add-Member -name lname -membertype "Noteproperty" -Value "Patkar"
+$var | Get-Member
+$var | Add-Member -name fullname -Force -MemberType "ScriptMethod" -value {"'$($this.fname)' '$($this.lname)'"}
+$var.fullname()
+$var=[PScustomobject]@{fname="Prathamesh";lname="Patkar"}
+$var
+$var=[PScustomobject]@{fname="Prathamesh";lname="Patkar";fullname={"'($this.fname)' '($this.lname)'"}}
+$PSVersionTable
+New-Item -ItemType file -Path C:\Windows\localusers.csv
+$users=Import-Csv -Path C:\Users.csv
+$users
+foreach($user in $users)
+{
+$pass=$user.Password|ConvertTo-SecureString -AsPlainText -Force
+
+New-LocalUser -Name $user.Name -Password $pass
+
+}
+
+$pass | ConvertFrom-SecureString 
+Stop-Transcript
