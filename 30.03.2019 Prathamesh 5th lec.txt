@@ -1,0 +1,85 @@
+[int]$firstnumber= Read-host -Prompt "Please input first number"
+[int]$secondnum= Read-Host -Prompt "Please input second number"
+[int]$operation= Read-Host -Prompt "Please input 1 for ADD, 2 for subtraction,3 Multiplication, 4 Division"
+switch($operation)
+{
+"1"{Write-Host " The sum of numbers is '$($firstnumber)' + '$($secondnum)'"}
+}
+"2"{Write-Host " The sum of numbers is '$firstnumber' - '$secondnum' ")
+"3"{Write-Host " The sum of numbers is '$firstnumber' * '$secondnum' ")
+"4"{Write-Host " The sum of numbers is '$firstnumber' / '$secondnum' ")
+default
+
+}
+"1" | Get-Member
+Start-Transcript
+"1" | Get-Member
+$p= "abc"
+$p.Chars(2)
+Get-Help export-csv -online
+
+$mycsv=Import-Csv -path "C:\input.csv"
+$mycsv | Get-Member
+$mycsv
+foreach($user in $mycsv)
+{
+
+$samname="$($($user.firstname).chars(0))$($user.lastname)"
+$myhash=[pscustomobject]@{fname=$user.firstname;lname=$user.lastname;samaccountname=$samname}
+$myhash | export-csv -path "C:\sam.csv" -NoTypeInformation -Append
+}
+class users
+{
+$finame
+$seconame
+$mailaddress
+}
+
+$myvar= New-Object -TypeName users
+$myvar.finame="Prathamesh"
+$myvar.seconame="Patkar"
+$myvar.mailaddress="prathamesh.patkar@gmail.com"
+$myvar
+
+class myvm
+{
+ [ValidatePattern("^(mum|del|blr)-(win|lin|unix)-(srv[0-9][0-9])$")]
+    
+[string]$vmname
+}
+
+$myvar1= New-Object -TypeName myvm
+
+$myvar1.vmname="mum-win-srv01"
+$myvar1.vmname
+
+class new
+{
+ [ValidateSet(1024,2048,4096)]
+    
+[int]$ramcapacity
+}
+
+$myvar1= New-Object -TypeName new
+
+$myvar1.ramcapacity=1023
+
+class myusers
+{
+
+[string]$fn
+[string]$ln
+
+[string]emailaddress(){return "$($this.fn).$($this.ln)@gmail.com"}
+sam() {return"$($($this.fn).chars(0))$($this.ln)"}
+}
+
+$myu= New-Object -TypeName myusers
+
+$myu.fn="Prathamesh"
+$myu.ln="Patkar"
+$myu.ln
+
+$myu.emailaddress()
+Stop-Transcript
+
