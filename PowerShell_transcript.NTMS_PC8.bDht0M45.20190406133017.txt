@@ -1,0 +1,3154 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20190406133017
+Username: NTMS_PC8\VMware
+RunAs User: NTMS_PC8\VMware
+Machine: NTMS_PC8 (Microsoft Windows NT 6.3.9600.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe
+Process ID: 5136
+PSVersion: 5.1.14409.1018
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14409.1018
+BuildVersion: 10.0.14409.1018
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\VMware\Documents\PowerShell_transcript.NTMS_PC8.bDht0M45.20190406133017.txt
+PS C:\Windows\system32> $toptenprocess=get-process | Sort-Object -Descending | select  -First 10 | select name,@{l="ws(mb)";e={$_.ws/1mb}}
+PS C:\Windows\system32> $toptenprocess
+
+Name                        ws(mb)
+----                        ------
+WZQKPICK                5.28515625
+wmpnetwk                  4.171875
+winlogon                 8.2109375
+wininit                 3.85546875
+wfcrun32               10.16015625
+vmware-usbarbitrator64  7.26171875
+vmware-tray              5.5859375
+vmware-hostd           42.75390625
+vmware-authd            8.87109375
+vmnat                   4.83203125
+
+
+PS C:\Windows\system32> Get-ChildItem -path C:\Windows
+
+
+    Directory: C:\Windows
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        8/22/2013   9:06 PM                addins
+d-----        8/22/2013   9:06 PM                ADFS
+d-----        2/10/2017   4:43 PM                AppCompat
+d-----        3/29/2019   1:15 PM                apppatch
+d-----         4/6/2019   1:20 PM                AppReadiness
+d-r---       10/15/2018   1:15 PM                assembly
+d-----        8/22/2013   9:06 PM                Boot
+d-----        8/22/2013   9:06 PM                Branding
+d-----        1/27/2017   9:29 PM                Camera
+d-----        3/29/2019  12:52 PM                CbsTemp
+d-----        4/29/2016  10:03 AM                CSC
+d-----        8/22/2013   9:06 PM                Cursors
+d-----         6/9/2017   3:56 PM                debug
+d-r---        8/22/2013   9:06 PM                DesktopTileResources
+d-----        8/22/2013   9:06 PM                diagnostics
+d-----        8/22/2013   9:13 PM                DigitalLocker
+d---s-        8/22/2013   9:06 PM                Downloaded Program Files
+d-----        1/20/2017   9:54 PM                en-GB
+d-----        9/30/2013   9:26 AM                en-US
+d-----        1/27/2017   9:29 PM                FileManager
+d-r-s-        3/29/2019   1:15 PM                Fonts
+d-----        8/22/2013   9:06 PM                Globalization
+d-----        9/30/2013   9:26 AM                Help
+d-----       12/12/2017   9:34 PM                IME
+d-r---        1/27/2017   9:29 PM                ImmersiveControlPanel
+d-----         4/6/2019  10:05 AM                Inf
+d-----        8/22/2013   9:06 PM                InputMethod
+d-----        8/22/2013   9:06 PM                L2Schemas
+d-----        9/29/2018   1:11 PM                LiveKernelReports
+d-----        2/16/2019   9:49 AM                Logs
+d-r-s-        8/22/2013   9:06 PM                Media
+d-----        1/27/2017   9:29 PM                MediaViewer
+d-----         4/6/2019  10:15 AM                Microsoft.NET
+d-----         2/9/2017   2:56 PM                Migration
+d-----        2/22/2019  10:14 PM                Minidump
+d-----        5/21/2016  10:01 PM                ModemLogs
+d-r---        8/22/2013   9:06 PM                Offline Web Pages
+d-----        2/16/2019   9:49 AM                Panther
+d-----         5/5/2016   9:19 PM                PCHEALTH
+d-----        8/22/2013   9:06 PM                Performance
+d-----        8/22/2013   9:06 PM                PLA
+d-----        3/16/2019   5:28 PM                PolicyDefinitions
+d-----         4/4/2019   5:27 PM                Prefetch
+d-----        8/20/2017   3:08 PM                Registration
+d-----        9/30/2013   9:30 AM                RemotePackages
+d-----        3/31/2019   7:56 AM                rescache
+d-----        8/22/2013   9:06 PM                Resources
+d-----        8/22/2013   9:06 PM                SchCache
+d-----       10/15/2018   9:47 PM                schemas
+d-----        9/30/2013   9:30 AM                security
+d-----        8/22/2013   8:15 PM                ServiceProfiles
+d-----        1/27/2017   9:29 PM                servicing
+d-----        8/22/2013   8:15 PM                Setup
+d-----        1/27/2017   9:28 PM                ShellNew
+d-----        9/30/2013   9:30 AM                SKB
+d-----       12/22/2017   8:38 PM                SoftwareDistribution
+d-----        8/22/2013   9:06 PM                Speech
+d-----        8/22/2013   9:06 PM                System
+d-----        3/30/2019   9:44 AM                System32
+d-----        8/22/2013   9:06 PM                SystemResources
+d-----        3/29/2019   1:19 PM                SysWOW64
+d-----        8/22/2013   9:06 PM                TAPI
+d-----        8/10/2016  12:58 PM                Tasks
+d-----         4/6/2019  10:08 AM                Temp
+d-r---        3/29/2019   1:15 PM                ToastData
+d-----        3/25/2019   3:16 PM                tracing
+d-----        1/27/2017   9:29 PM                twain_32
+d-----        8/22/2013   9:06 PM                vpnplugins
+d-----        8/22/2013   9:06 PM                Vss
+d-----        8/22/2013   9:06 PM                Web
+d-----        1/27/2017   9:28 PM                WinStore
+d-----        3/30/2019   9:54 AM                WinSxS
+-a----        3/23/2019  12:27 PM             22 123.txt
+-a----        3/23/2019  12:35 PM              0 1234.txt
+-a----        8/22/2013   4:51 PM          56832 bfsvc.exe
+-a--s-         4/6/2019  10:06 AM          67584 bootstat.dat
+-a----        2/16/2019   9:50 AM           1908 diagerr.xml
+-a----        2/16/2019   9:50 AM           1908 diagwrn.xml
+-a----         2/9/2019   4:30 PM          14938 DPINST.LOG
+-a----        3/29/2017  12:12 PM           4167 DtcInstall.log
+-a----        8/22/2013  12:21 PM          36235 Enterprise.xml
+-a----        8/28/2016   1:14 AM        2755504 explorer.exe
+-a----         6/2/2017   5:36 PM        1001984 HelpPane.exe
+-a----       10/29/2014   8:13 AM          17408 hh.exe
+-a----        3/23/2019   3:58 PM              0 localusers.csv
+-a----        2/22/2019  10:14 PM      904187932 MEMORY.DMP
+-a----        8/22/2013  12:31 PM          43131 mib.bin
+-a----         7/9/2015  10:43 PM         221184 notepad.exe
+-a----         4/2/2019   1:36 PM        2154984 PFRO.log
+-a----       10/29/2014   7:42 AM         154624 regedit.exe
+-a----         4/6/2019  10:04 AM          20818 setupact.log
+-a----        2/16/2019   9:49 AM              0 setuperr.log
+-a----        11/4/2014  11:57 AM         128512 splwow64.exe
+-a----        8/22/2013  12:21 PM          35891 Starter.xml
+-a----        8/22/2013   6:55 PM            219 system.ini
+-a----       10/29/2014   7:04 AM          54272 twain_32.dll
+-a----        9/30/2013   9:56 AM           5446 vmgcoinstall.log
+-a----        3/29/2019   1:00 PM            167 win.ini
+-a----         4/6/2019  11:44 AM        1961048 WindowsUpdate.log
+-a----       10/29/2014   7:23 AM           9728 winhlp32.exe
+-a----        6/18/2013   8:24 PM         316640 WMSysPr9.prx
+-a----       10/29/2014   8:04 AM          11264 write.exe
+
+
+PS C:\Windows\system32> Get-ChildItem -path C:\Windows -file
+
+
+    Directory: C:\Windows
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        3/23/2019  12:27 PM             22 123.txt
+-a----        3/23/2019  12:35 PM              0 1234.txt
+-a----        8/22/2013   4:51 PM          56832 bfsvc.exe
+-a--s-         4/6/2019  10:06 AM          67584 bootstat.dat
+-a----        2/16/2019   9:50 AM           1908 diagerr.xml
+-a----        2/16/2019   9:50 AM           1908 diagwrn.xml
+-a----         2/9/2019   4:30 PM          14938 DPINST.LOG
+-a----        3/29/2017  12:12 PM           4167 DtcInstall.log
+-a----        8/22/2013  12:21 PM          36235 Enterprise.xml
+-a----        8/28/2016   1:14 AM        2755504 explorer.exe
+-a----         6/2/2017   5:36 PM        1001984 HelpPane.exe
+-a----       10/29/2014   8:13 AM          17408 hh.exe
+-a----        3/23/2019   3:58 PM              0 localusers.csv
+-a----        2/22/2019  10:14 PM      904187932 MEMORY.DMP
+-a----        8/22/2013  12:31 PM          43131 mib.bin
+-a----         7/9/2015  10:43 PM         221184 notepad.exe
+-a----         4/2/2019   1:36 PM        2154984 PFRO.log
+-a----       10/29/2014   7:42 AM         154624 regedit.exe
+-a----         4/6/2019  10:04 AM          20818 setupact.log
+-a----        2/16/2019   9:49 AM              0 setuperr.log
+-a----        11/4/2014  11:57 AM         128512 splwow64.exe
+-a----        8/22/2013  12:21 PM          35891 Starter.xml
+-a----        8/22/2013   6:55 PM            219 system.ini
+-a----       10/29/2014   7:04 AM          54272 twain_32.dll
+-a----        9/30/2013   9:56 AM           5446 vmgcoinstall.log
+-a----        3/29/2019   1:00 PM            167 win.ini
+-a----         4/6/2019  11:44 AM        1961048 WindowsUpdate.log
+-a----       10/29/2014   7:23 AM           9728 winhlp32.exe
+-a----        6/18/2013   8:24 PM         316640 WMSysPr9.prx
+-a----       10/29/2014   8:04 AM          11264 write.exe
+
+
+PS C:\Windows\system32> $allfiles=Get-ChildItem -path C:\Windows -file
+PS C:\Windows\system32> $size100kb=$allfiles|Where-Object{$_.Length -gt 100kb}
+PS C:\Windows\system32> $top10= $size100kb|Sort-Object -Property lenght -Descending | select -First 10
+PS C:\Windows\system32> $top10
+
+
+    Directory: C:\Windows
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        8/28/2016   1:14 AM        2755504 explorer.exe
+-a----         6/2/2017   5:36 PM        1001984 HelpPane.exe
+-a----        2/22/2019  10:14 PM      904187932 MEMORY.DMP
+-a----         7/9/2015  10:43 PM         221184 notepad.exe
+-a----         4/2/2019   1:36 PM        2154984 PFRO.log
+-a----       10/29/2014   7:42 AM         154624 regedit.exe
+-a----        11/4/2014  11:57 AM         128512 splwow64.exe
+-a----         4/6/2019   1:38 PM        2003705 WindowsUpdate.log
+-a----        6/18/2013   8:24 PM         316640 WMSysPr9.prx
+
+
+PS C:\Windows\system32> $top10 |Get-Member
+
+
+   TypeName: System.IO.FileInfo
+
+Name                      MemberType     Definition
+----                      ----------     ----------
+LinkType                  CodeProperty   System.String LinkType{get=GetLinkType;}
+Mode                      CodeProperty   System.String Mode{get=Mode;}
+Target                    CodeProperty   System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToke...
+AppendText                Method         System.IO.StreamWriter AppendText()
+CopyTo                    Method         System.IO.FileInfo CopyTo(string destFileName), System.IO.FileInfo CopyTo(string destFileName, bool overwrite)
+Create                    Method         System.IO.FileStream Create()
+CreateObjRef              Method         System.Runtime.Remoting.ObjRef CreateObjRef(type requestedType)
+CreateText                Method         System.IO.StreamWriter CreateText()
+Decrypt                   Method         void Decrypt()
+Delete                    Method         void Delete()
+Encrypt                   Method         void Encrypt()
+Equals                    Method         bool Equals(System.Object obj)
+GetAccessControl          Method         System.Security.AccessControl.FileSecurity GetAccessControl(), System.Security.AccessControl.FileSecurity GetAcces...
+GetHashCode               Method         int GetHashCode()
+GetLifetimeService        Method         System.Object GetLifetimeService()
+GetObjectData             Method         void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingCont...
+GetType                   Method         type GetType()
+InitializeLifetimeService Method         System.Object InitializeLifetimeService()
+MoveTo                    Method         void MoveTo(string destFileName)
+Open                      Method         System.IO.FileStream Open(System.IO.FileMode mode), System.IO.FileStream Open(System.IO.FileMode mode, System.IO.F...
+OpenRead                  Method         System.IO.FileStream OpenRead()
+OpenText                  Method         System.IO.StreamReader OpenText()
+OpenWrite                 Method         System.IO.FileStream OpenWrite()
+Refresh                   Method         void Refresh()
+Replace                   Method         System.IO.FileInfo Replace(string destinationFileName, string destinationBackupFileName), System.IO.FileInfo Repla...
+SetAccessControl          Method         void SetAccessControl(System.Security.AccessControl.FileSecurity fileSecurity)
+ToString                  Method         string ToString()
+PSChildName               NoteProperty   string PSChildName=explorer.exe
+PSDrive                   NoteProperty   PSDriveInfo PSDrive=C
+PSIsContainer             NoteProperty   bool PSIsContainer=False
+PSParentPath              NoteProperty   string PSParentPath=Microsoft.PowerShell.Core\FileSystem::C:\Windows
+PSPath                    NoteProperty   string PSPath=Microsoft.PowerShell.Core\FileSystem::C:\Windows\explorer.exe
+PSProvider                NoteProperty   ProviderInfo PSProvider=Microsoft.PowerShell.Core\FileSystem
+Attributes                Property       System.IO.FileAttributes Attributes {get;set;}
+CreationTime              Property       datetime CreationTime {get;set;}
+CreationTimeUtc           Property       datetime CreationTimeUtc {get;set;}
+Directory                 Property       System.IO.DirectoryInfo Directory {get;}
+DirectoryName             Property       string DirectoryName {get;}
+Exists                    Property       bool Exists {get;}
+Extension                 Property       string Extension {get;}
+FullName                  Property       string FullName {get;}
+IsReadOnly                Property       bool IsReadOnly {get;set;}
+LastAccessTime            Property       datetime LastAccessTime {get;set;}
+LastAccessTimeUtc         Property       datetime LastAccessTimeUtc {get;set;}
+LastWriteTime             Property       datetime LastWriteTime {get;set;}
+LastWriteTimeUtc          Property       datetime LastWriteTimeUtc {get;set;}
+Length                    Property       long Length {get;}
+Name                      Property       string Name {get;}
+BaseName                  ScriptProperty System.Object BaseName {get=if ($this.Extension.Length -gt 0){$this.Name.Remove($this.Name.Length - $this.Extensio...
+VersionInfo               ScriptProperty System.Object VersionInfo {get=[System.Diagnostics.FileVersionInfo]::GetVersionInfo($this.FullName);}
+
+
+PS C:\Windows\system32> $top10
+
+
+    Directory: C:\Windows
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        8/28/2016   1:14 AM        2755504 explorer.exe
+-a----         6/2/2017   5:36 PM        1001984 HelpPane.exe
+-a----        2/22/2019  10:14 PM      904187932 MEMORY.DMP
+-a----         7/9/2015  10:43 PM         221184 notepad.exe
+-a----         4/2/2019   1:36 PM        2154984 PFRO.log
+-a----       10/29/2014   7:42 AM         154624 regedit.exe
+-a----        11/4/2014  11:57 AM         128512 splwow64.exe
+-a----         4/6/2019   1:38 PM        2003705 WindowsUpdate.log
+-a----        6/18/2013   8:24 PM         316640 WMSysPr9.prx
+
+
+PS C:\Windows\system32> param($newpath)
+$allfiles=Get-ChildItem -path $newpath -file
+PS C:\Windows\system32> param($newpath)
+PS C:\Windows\system32> $allfiles=Get-ChildItem -path $newpath -file
+PS C:\Windows\system32> param($newpath,$size,$count)
+PS C:\Windows\system32> $allfiles=Get-ChildItem -path $newpath -file
+$size100kb=$allfiles|Where-Object{$_.Length -gt $size}
+$top10= $size100kb|Sort-Object -Property lenght -Descending | select -First $count
+PS C:\Windows\system32> TerminatingError(Select-Object): "Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the 
+argument collection contains a null value. Supply a collection that does not contain any null values and then try the 
+command again.
+At line:3 char:77
++ ... 100kb|Sort-Object -Property lenght -Descending | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value.
+Supply a collection that does not contain any null values and then try the command again.
+At line:3 char:77
++ ... 100kb|Sort-Object -Property lenght -Descending | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+
+PS C:\Windows\system32> param($newpath,$size,$count)
+PS C:\Windows\system32> $allfiles=Get-ChildItem -path $newpath -file
+PS C:\Windows\system32> $size100kb=$allfiles|Where-Object{$_.Length -gt $size}
+PS C:\Windows\system32> $top10= $size100kb|Sort-Object -Property lenght -Descending | select -First $count
+>> TerminatingError(Select-Object): "Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the 
+argument collection contains a null value. Supply a collection that does not contain any null values and then try the 
+command again.
+At line:1 char:77
++ ... 100kb|Sort-Object -Property lenght -Descending | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value.
+Supply a collection that does not contain any null values and then try the command again.
+At line:1 char:77
++ ... 100kb|Sort-Object -Property lenght -Descending | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+
+PS C:\Windows\system32> function write-errorlog
+{
+$pathp="C:\prathamesh.error.log"
+"Test"|Out-File -FilePath $pathp -Append
+}
+
+write-errorlog
+>> TerminatingError(Out-File): "Access to the path 'C:\prathamesh.error.log' is denied."
+Out-File : Access to the path 'C:\prathamesh.error.log' is denied.
+At line:4 char:8
++ "Test"|Out-File -FilePath $pathp -Append
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], UnauthorizedAccessException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+Out-File : Access to the path 'C:\prathamesh.error.log' is denied.
+At line:4 char:8
++ "Test"|Out-File -FilePath $pathp -Append
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], UnauthorizedAccessException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+PS C:\Windows\system32> function write-errorlog
+{
+$pathp="C:\prathamesh\error.log"
+"Test"|Out-File -FilePath $pathp -Append
+}
+
+write-errorlog
+PS C:\Windows\system32> function get-topprocess
+{
+param($property,$count)
+Get-Process | Sort-Object -Descending -Property $property | select -First $count
+}
+
+get-topprocess
+>> TerminatingError(Select-Object): "Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the 
+argument collection contains a null value. Supply a collection that does not contain any null values and then try the 
+command again.
+At line:4 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value.
+Supply a collection that does not contain any null values and then try the command again.
+At line:4 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+
+PS C:\Windows\system32> function get-topprocess
+{
+param($property,$count)
+Get-Process | Sort-Object -Descending -Property $property | select -First $count
+
+}
+
+get-topprocess
+>> TerminatingError(Select-Object): "Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the 
+argument collection contains a null value. Supply a collection that does not contain any null values and then try the 
+command again.
+At line:4 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value.
+Supply a collection that does not contain any null values and then try the command again.
+At line:4 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+
+PS C:\Windows\system32> 
+function get-topprocess
+{
+param($property,$count)
+Get-Process | Sort-Object -Descending -Property $property | select -First $count
+
+}
+PS C:\Windows\system32> get-topprocess
+>> TerminatingError(Select-Object): "Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the 
+argument collection contains a null value. Supply a collection that does not contain any null values and then try the 
+command again.
+At line:5 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value.
+Supply a collection that does not contain any null values and then try the command again.
+At line:5 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+
+PS C:\Windows\system32> get-topprocess -property ws -count 10
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+    650      47   222756     234176      95.20   5136   1 powershell_ise
+   1979     105    81516     150028      37.28   1592   1 explorer
+    690      70    54628     128068      53.97   4232   1 iexplore
+    936      51   135656     121180              2216   0 AzureADConnectAuthenticationAgentService
+    867      50    54600      95460      11.25   4904   1 chrome
+    521      26    87928      92328       0.67   5268   1 powershell
+    320      27    50860      82452       5.14   3160   1 chrome
+    352      25    43000      50848       5.81   2768   1 chrome
+    432      23    47868      48300       0.14   1584   1 powershell
+    432      24    47584      48184       0.17    852   1 powershell
+
+
+PS C:\Windows\system32> get-topprocess | Get-Member
+>> TerminatingError(Select-Object): "Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value. Supply a collection that does not contain any null values and then try the command again."
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the 
+argument collection contains a null value. Supply a collection that does not contain any null values and then try the 
+command again.
+At line:5 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+Select-Object : Cannot validate argument on parameter 'First'. The argument is null, empty, or an element of the argument collection contains a null value.
+Supply a collection that does not contain any null values and then try the command again.
+At line:5 char:75
++ ...  | Sort-Object -Descending -Property $property | select -First $count
++                                                                    ~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Select-Object], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.SelectObjectCommand
+
+Get-Member : You must specify an object for the Get-Member cmdlet.
+At line:1 char:18
++ get-topprocess | Get-Member
++                  ~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-Member], InvalidOperationException
+    + FullyQualifiedErrorId : NoObjectInGetMember,Microsoft.PowerShell.Commands.GetMemberCommand
+Get-Member : You must specify an object for the Get-Member cmdlet.
+At line:1 char:18
++ get-topprocess | Get-Member
++                  ~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-Member], InvalidOperationException
+    + FullyQualifiedErrorId : NoObjectInGetMember,Microsoft.PowerShell.Commands.GetMemberCommand
+
+PS C:\Windows\system32> get-topprocess -property ws -count 10
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+    724      48   229824     249360      99.30   5136   1 powershell_ise
+   1979     105    81516     150028      37.31   1592   1 explorer
+    690      70    54780     128252      54.48   4232   1 iexplore
+    946      51   135652     121180              2216   0 AzureADConnectAuthenticationAgentService
+    865      50    54604      95464      11.27   4904   1 chrome
+    521      26    87928      92328       0.67   5268   1 powershell
+    320      27    50860      82452       5.14   3160   1 chrome
+    352      25    43000      50848       5.81   2768   1 chrome
+    432      23    47868      48300       0.14   1584   1 powershell
+    432      24    47584      48184       0.17    852   1 powershell
+
+
+PS C:\Windows\system32> Get-Item -Path "C:\Windows\IME\SPTIP.DLL"
+
+
+    Directory: C:\Windows\IME
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       10/29/2014   6:52 AM         129536 SPTIP.DLL
+
+
+PS C:\Windows\system32> Get-Item -Path "C:\Windows\IME\SPTIP.DLL" | fl*
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:45
++ Get-Item -Path "C:\Windows\IME\SPTIP.DLL" | fl*
++                                             ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:1 char:45
++ Get-Item -Path "C:\Windows\IME\SPTIP.DLL" | fl*
++                                             ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> Get-Item -Path "C:\Windows\IME\SPTIP.DLL" | fl *
+
+
+PSPath            : Microsoft.PowerShell.Core\FileSystem::C:\Windows\IME\SPTIP.DLL
+PSParentPath      : Microsoft.PowerShell.Core\FileSystem::C:\Windows\IME
+PSChildName       : SPTIP.DLL
+PSDrive           : C
+PSProvider        : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer     : False
+Mode              : -a----
+VersionInfo       : File:             C:\Windows\IME\SPTIP.DLL
+                    InternalName:     SpTip.dll
+                    OriginalFilename: SpTip.dll.mui
+                    FileVersion:      6.3.9600.16384 (winblue_rtm.130821-1623)
+                    FileDescription:  Speech TIP
+                    Product:          Microsoft® Windows® Operating System
+                    ProductVersion:   6.3.9600.16384
+                    Debug:            False
+                    Patched:          False
+                    PreRelease:       False
+                    PrivateBuild:     False
+                    SpecialBuild:     False
+                    Language:         English (United States)
+
+BaseName          : SPTIP
+Target            : {C:\Windows\WinSxS\wow64_microsoft-windows-speech-userexperience_31bf3856ad364e35_6.3.9600.17415_none_1769954453ead4b3\SPTIP.DLL}
+LinkType          : HardLink
+Name              : SPTIP.DLL
+Length            : 129536
+DirectoryName     : C:\Windows\IME
+Directory         : C:\Windows\IME
+IsReadOnly        : False
+Exists            : True
+FullName          : C:\Windows\IME\SPTIP.DLL
+Extension         : .DLL
+CreationTime      : 1/24/2017 12:39:05 PM
+CreationTimeUtc   : 1/24/2017 7:09:05 AM
+LastAccessTime    : 1/24/2017 12:39:05 PM
+LastAccessTimeUtc : 1/24/2017 7:09:05 AM
+LastWriteTime     : 10/29/2014 6:52:02 AM
+LastWriteTimeUtc  : 10/29/2014 1:22:02 AM
+Attributes        : Archive
+
+
+
+PS C:\Windows\system32> function get-dllfiles
+{
+begin{write-host " DLL files are as below"}
+
+process{if($_.extension -eq ".dll")
+{$_.name | Out-File "C:\Prathamesh\alldll.txt"}
+else {}
+}
+
+end{Write-Host "END"}
+
+
+}
+PS C:\Windows\system32> Get-ChildItem -Path C:\Windows | get-dllfiles
+ DLL files are as below
+END
+PS C:\Windows\system32> Get-ChildItem -Path C:\Windows\System32 | get-dllfiles
+ DLL files are as below
+END
+PS C:\Windows\system32> function get-dllfiles
+{
+begin{write-host " DLL files are as below"}
+
+process{if($_.extension -eq ".dll")
+{$_.name | Out-File "C:\Prathamesh\alldll.txt" -Append}
+else {}
+}
+
+end{Write-Host "END"}
+
+
+}
+PS C:\Windows\system32> Get-ChildItem -Path C:\Windows\System32 | get-dllfiles
+ DLL files are as below
+END
+PS C:\Windows\system32> function get-dllfiles
+{
+begin{write-host "DLL files are as below"}
+
+process{if($_.extension -eq ".dll")
+{$_.name | Out-File "C:\Prathamesh\alldll.txt" -Append
+$_.name}
+else {}
+}
+
+end{Write-Host "END"}
+
+
+}
+PS C:\Windows\system32> Get-ChildItem -Path C:\Windows\System32 | get-dllfiles
+DLL files are as below
+accesor.dll
+accessibilitycpl.dll
+ACCTRES.dll
+acledit.dll
+aclui.dll
+acmigration.dll
+AcpiServiceVnA64.dll
+acppage.dll
+acproxy.dll
+AcsMsgs.dll
+ActionCenter.dll
+ActionCenterCPL.dll
+ActionQueue.dll
+activeds.dll
+actxprxy.dll
+adhapi.dll
+adhsvc.dll
+AdmTmpl.dll
+adprovider.dll
+adrclient.dll
+adsldp.dll
+adsldpc.dll
+adsmsext.dll
+adsnt.dll
+adtschema.dll
+advapi32.dll
+advapi32res.dll
+advpack.dll
+aecache.dll
+aeevts.dll
+aeinv.dll
+aelupsvc.dll
+aepic.dll
+AepRoam.dll
+AERTAC64.dll
+AERTAR64.dll
+AltTab.dll
+amstream.dll
+apds.dll
+api-ms-win-crt-conio-l1-1-0.dll
+api-ms-win-crt-convert-l1-1-0.dll
+api-ms-win-crt-environment-l1-1-0.dll
+api-ms-win-crt-filesystem-l1-1-0.dll
+api-ms-win-crt-heap-l1-1-0.dll
+api-ms-win-crt-locale-l1-1-0.dll
+api-ms-win-crt-math-l1-1-0.dll
+api-ms-win-crt-multibyte-l1-1-0.dll
+api-ms-win-crt-private-l1-1-0.dll
+api-ms-win-crt-process-l1-1-0.dll
+api-ms-win-crt-runtime-l1-1-0.dll
+api-ms-win-crt-stdio-l1-1-0.dll
+api-ms-win-crt-string-l1-1-0.dll
+api-ms-win-crt-time-l1-1-0.dll
+api-ms-win-crt-utility-l1-1-0.dll
+apisetschema.dll
+apphelp.dll
+Apphlpdm.dll
+appidapi.dll
+AppIdPolicyEngineApi.dll
+appidsvc.dll
+appinfo.dll
+appmgmts.dll
+appmgr.dll
+appraiser.dll
+AppReadiness.dll
+apprepapi.dll
+apprepsync.dll
+appsruprov.dll
+AppxAllUserStore.dll
+AppxApplicabilityEngine.dll
+AppXDeploymentClient.dll
+AppXDeploymentExtensions.dll
+AppXDeploymentServer.dll
+AppxPackaging.dll
+AppxSip.dll
+AppxStreamingDataSourcePS.dll
+AppxSysprep.dll
+asferror.dll
+aspnet_counters.dll
+asycfilt.dll
+atl.dll
+atl100.dll
+atlthunk.dll
+atmfd.dll
+atmlib.dll
+AudioEndpointBuilder.dll
+AudioEng.dll
+AUDIOKSE.dll
+audioLibVc.dll
+AudioSes.dll
+audiosrv.dll
+auditcse.dll
+AuditNativeSnapIn.dll
+AuditPolicyGPInterop.dll
+auditpolmsg.dll
+AuthBroker.dll
+AuthExt.dll
+authfwcfg.dll
+AuthFWGP.dll
+AuthFWSnapin.dll
+AuthFWWizFwk.dll
+AuthHostProxy.dll
+authui.dll
+authz.dll
+autoplay.dll
+AutoWorkplaceN.dll
+avicap32.dll
+avifil32.dll
+avrt.dll
+AxInstSv.dll
+azroles.dll
+azroleui.dll
+AzSqlExt.dll
+basecsp.dll
+basesrv.dll
+batmeter.dll
+bcd.dll
+bcdprov.dll
+bcdsrv.dll
+BCP47Langs.dll
+bcrypt.dll
+bcryptprimitives.dll
+BdeHdCfgLib.dll
+bderepair.dll
+bdesvc.dll
+BdeSysprep.dll
+bdeui.dll
+BFE.DLL
+bi.dll
+bidispl.dll
+BioCredProv.dll
+bisrv.dll
+bitsigd.dll
+bitsperf.dll
+bitsprx2.dll
+bitsprx3.dll
+bitsprx4.dll
+bitsprx5.dll
+bitsprx6.dll
+bitsprx7.dll
+biwinrt.dll
+blackbox.dll
+BlbEvents.dll
+blbres.dll
+blb_ps.dll
+BluetoothApis.dll
+BootMenuUX.dll
+bootstr.dll
+bootux.dll
+BOOTVID.DLL
+brdgcfg.dll
+bridgeres.dll
+BrokerLib.dll
+browcli.dll
+browser.dll
+browseui.dll
+bthci.dll
+BthHFSrv.dll
+BthMtpContextHandler.dll
+bthpanapi.dll
+BthpanContextHandler.dll
+BthRadioMedia.dll
+bthserv.dll
+BthSQM.dll
+btpanui.dll
+BWContextHandler.dll
+cabinet.dll
+cabview.dll
+CallButtons.dll
+CallButtons.ProxyStub.dll
+capiprovider.dll
+capisp.dll
+catsrv.dll
+catsrvps.dll
+catsrvut.dll
+cca.dll
+cdd.dll
+cdosys.dll
+centel.dll
+certca.dll
+certcli.dll
+certCredProvider.dll
+certenc.dll
+CertEnroll.dll
+CertEnrollUI.dll
+certmgr.dll
+CertPolEng.dll
+certprop.dll
+cewmdm.dll
+cfgbkend.dll
+cfgmgr32.dll
+cfmifs.dll
+cfmifsproxy.dll
+chartv.dll
+chkwudrv.dll
+CHxReadingStringIME.dll
+ci.dll
+cic.dll
+CIRCoInst.dll
+clb.dll
+clbcatq.dll
+clfsw32.dll
+cliconfg.dll
+clrhost.dll
+clusapi.dll
+cmcfg32.dll
+cmdext.dll
+cmdial32.dll
+cmifw.dll
+cmipnpinstall.dll
+cmlua.dll
+cmpbk32.dll
+cmstplua.dll
+cmutil.dll
+cngcredui.dll
+cngprovider.dll
+cnvfat.dll
+cofiredm.dll
+colbact.dll
+COLORCNV.DLL
+colorui.dll
+combase.dll
+comcat.dll
+comctl32.dll
+comdlg32.dll
+common_clang64.dll
+CompPkgSup.dll
+compstui.dll
+comrepl.dll
+comres.dll
+comsnap.dll
+comsvcs.dll
+comuid.dll
+CONEQMSAPOGUILibrary.dll
+ConfigureExpandedStorage.dll
+connect.dll
+ConnectedAccountState.dll
+ConsentUX.dll
+console.dll
+CoreMmRes.dll
+correngine.dll
+CPFilters.dll
+CredentialMigrationHandler.dll
+credssp.dll
+credui.dll
+crypt32.dll
+cryptbase.dll
+cryptcatsvc.dll
+cryptdlg.dll
+cryptdll.dll
+cryptext.dll
+cryptnet.dll
+CryptoWinRT.dll
+cryptsp.dll
+cryptsvc.dll
+crypttpmeksvc.dll
+cryptui.dll
+cryptuiwizard.dll
+cryptxml.dll
+cscapi.dll
+cscdll.dll
+CscMig.dll
+cscobj.dll
+cscsvc.dll
+cscui.dll
+csrsrv.dll
+CSystemEventsBrokerClient.dll
+CX64APO.dll
+C_G18030.DLL
+C_IS2022.DLL
+C_ISCII.DLL
+d2d1.dll
+d3d10.dll
+d3d10core.dll
+d3d10level9.dll
+d3d10warp.dll
+d3d10_1.dll
+d3d10_1core.dll
+d3d11.dll
+d3d8thk.dll
+d3d9.dll
+D3DCompiler_47.dll
+dab.dll
+dabapi.dll
+DAConn.dll
+dafBth.dll
+DafPrintProvider.dll
+dafupnp.dll
+dafWCN.dll
+dafWfdProvider.dll
+DAFWSD.dll
+DAMM.dll
+DaOtpCredentialProvider.dll
+das.dll
+dataclen.dll
+datusage.dll
+davclnt.dll
+davhlpr.dll
+dbgeng.dll
+dbghelp.dll
+dbnetlib.dll
+dbnmpntw.dll
+dciman32.dll
+dcomp.dll
+DDACLSys.dll
+DDOIProxy.dll
+DDORes.dll
+DDPA64.dll
+DDPA64F3.dll
+ddpchunk.dll
+DDPD64A.dll
+DDPD64AF3.dll
+DDPO64A.dll
+DDPO64AF3.dll
+DDPP64A.dll
+DDPP64AF3.dll
+ddptrace.dll
+ddputils.dll
+ddp_ps.dll
+ddraw.dll
+ddrawex.dll
+DefaultDeviceManager.dll
+DefaultPrinterProvider.dll
+defragproxy.dll
+defragres.dll
+defragsvc.dll
+delegatorprovider.dll
+deskadp.dll
+deskmon.dll
+DevDispItemProvider.dll
+devenum.dll
+deviceaccess.dll
+deviceassociation.dll
+DeviceCenter.dll
+DeviceDisplayStatusManager.dll
+DeviceDriverRetrievalClient.dll
+DeviceElementSource.dll
+DeviceMetadataRetrievalClient.dll
+DevicePairing.dll
+DevicePairingFolder.dll
+DevicePairingProxy.dll
+deviceregistration.dll
+DeviceSetupManager.dll
+DeviceSetupManagerAPI.dll
+DeviceSetupStatusProvider.dll
+DeviceUxRes.dll
+devinv.dll
+devmgr.dll
+devobj.dll
+DevPropMgr.dll
+devrtl.dll
+dfdts.dll
+DfpCommon.dll
+dfscli.dll
+dfshim.dll
+DfsShlEx.dll
+dhcpcmonitor.dll
+dhcpcore.dll
+dhcpcore6.dll
+dhcpcsvc.dll
+dhcpcsvc6.dll
+DHCPQEC.DLL
+dhcpsapi.dll
+DiagCpl.dll
+diagperf.dll
+diagtrack.dll
+difxapi.dll
+dimsjob.dll
+dimsroam.dll
+dinput.dll
+dinput8.dll
+discan.dll
+diskcopy.dll
+DismApi.dll
+dispci.dll
+dispex.dll
+Display.dll
+dlnashext.dll
+dmdlgs.dll
+dmdskmgr.dll
+dmdskres.dll
+dmdskres2.dll
+dmintf.dll
+dmloader.dll
+dmocx.dll
+dmsynth.dll
+dmusic.dll
+dmutil.dll
+dmvdsitf.dll
+dmvscres.dll
+dnsapi.dll
+dnscmmc.dll
+dnsext.dll
+dnshc.dll
+dnsrslvr.dll
+docprop.dll
+DocumentPerformanceEvents.dll
+DolbyDAX2APOProp.dll
+DolbyDAX2APOv201.dll
+DolbyDAX2APOv211.dll
+dot3api.dll
+dot3cfg.dll
+Dot3Conn.dll
+dot3dlg.dll
+dot3gpclnt.dll
+dot3gpui.dll
+dot3hc.dll
+dot3mm.dll
+dot3msm.dll
+dot3svc.dll
+dot3ui.dll
+dpapi.dll
+dpapiprovider.dll
+dpapisrv.dll
+dpnaddr.dll
+dpnathlp.dll
+dpnet.dll
+dpnhpast.dll
+dpnhupnp.dll
+dpnlobby.dll
+dps.dll
+dpx.dll
+drmmgrtn.dll
+drmv2clt.dll
+drprov.dll
+drt.dll
+drtprov.dll
+drttransport.dll
+drvstore.dll
+dsauth.dll
+DscCore.dll
+DscCoreConfProv.dll
+dscproxy.dll
+dscTimer.dll
+dsdmo.dll
+dskquota.dll
+dskquoui.dll
+dsound.dll
+dsparse.dll
+dsprop.dll
+dsquery.dll
+dsrole.dll
+dssec.dll
+dssenh.dll
+Dsui.dll
+dsuiext.dll
+dswave.dll
+DTSBassEnhancementDLL64.dll
+DTSBoostDLL64.dll
+DTSGainCompensatorDLL64.dll
+DTSGFXAPO64.dll
+DTSGFXAPONS64.dll
+dtsh.dll
+DTSLFXAPO64.dll
+DTSLimiterDLL64.dll
+DTSNeoPCDLL64.dll
+DTSS2HeadphoneDLL64.dll
+DTSS2SpeakerDLL64.dll
+DTSSymmetryDLL64.dll
+DTSU2PGFX64.dll
+DTSU2PLFX64.dll
+DTSU2PREC64.dll
+DTSVoiceClarityDLL64.dll
+dui70.dll
+duser.dll
+dwmapi.dll
+dwmcore.dll
+dwmredir.dll
+DWrite.dll
+dxdiagn.dll
+dxgi.dll
+dxgwdi.dll
+dxmasf.dll
+DXP.dll
+dxpps.dll
+DxpTaskSync.dll
+dxtmsft.dll
+dxtrans.dll
+dxva2.dll
+e1dmsg.dll
+eapp3hst.dll
+eappcfg.dll
+eappgnui.dll
+eapphost.dll
+eappprxy.dll
+eapprovp.dll
+EAPQEC.DLL
+eapsvc.dll
+easconsent.dll
+easinvoker.proxystub.dll
+easwrt.dll
+efsadu.dll
+efscore.dll
+efslsaext.dll
+efssvc.dll
+efsutil.dll
+efswrt.dll
+EhStorAPI.dll
+EhStorPwdMgr.dll
+EhStorShell.dll
+els.dll
+ELSCore.dll
+elshyph.dll
+elslad.dll
+elsTrans.dll
+EmbeddedAppLauncherConfig.dll
+encapi.dll
+EncDec.dll
+EncDump.dll
+energy.dll
+energyprov.dll
+energytask.dll
+eqossnap.dll
+es.dll
+esent.dll
+esentprf.dll
+ETWESEProviderResources.dll
+EventAggregation.dll
+eventcls.dll
+evr.dll
+ExplorerFrame.dll
+f3ahvoas.dll
+Faultrep.dll
+fdBth.dll
+fdBthProxy.dll
+FdDevQuery.dll
+fde.dll
+fdeploy.dll
+fdPHost.dll
+fdPnp.dll
+fdprint.dll
+fdProxy.dll
+FDResPub.dll
+fdSSDP.dll
+fdWCN.dll
+fdWNet.dll
+fdWSD.dll
+feclient.dll
+fhautoplay.dll
+fhcat.dll
+fhcfg.dll
+fhcleanup.dll
+fhcpl.dll
+fhengine.dll
+fhevents.dll
+fhlisten.dll
+fhshl.dll
+fhsrchapi.dll
+fhsrchph.dll
+fhsvc.dll
+fhsvcctl.dll
+fhtask.dll
+fhuxadapter.dll
+fhuxapi.dll
+fhuxcommon.dll
+fhuxgraphics.dll
+fhuxpresentation.dll
+FileAppxStreamingDataSource.dll
+filemgmt.dll
+findnetprinters.dll
+FirewallAPI.dll
+FirewallControlPanel.dll
+fltLib.dll
+fmapi.dll
+FMAPO64.dll
+fmifs.dll
+fms.dll
+FntCache.dll
+fontext.dll
+fontsub.dll
+fphc.dll
+framedyn.dll
+framedynos.dll
+frprov.dll
+fsutilext.dll
+fthsvc.dll
+fundisc.dll
+fveapi.dll
+fveapibase.dll
+fvecerts.dll
+fvecpl.dll
+fveskybackup.dll
+fveui.dll
+fvewiz.dll
+fwcfg.dll
+FWPUCLNT.DLL
+FwRemoteSvr.dll
+FXSAPI.dll
+FXSCOM.dll
+FXSCOMEX.dll
+FXSCOMPOSE.dll
+FXSCOMPOSERES.dll
+FXSEVENT.dll
+FXSMON.dll
+FXSRESM.dll
+FXSROUTE.dll
+FXSST.dll
+FXST30.dll
+FXSTIFF.dll
+FXSUTILITY.dll
+gacinstall.dll
+gameux.dll
+GameUXLegacyGDFs.dll
+gcdef.dll
+gdi32.dll
+GdiPlus.dll
+generaltel.dll
+GeofenceMonitorService.dll
+getuname.dll
+GfxResources.dll
+glcndFilter.dll
+glmf32.dll
+GlobCollationHost.dll
+globinputhost.dll
+glu32.dll
+gnsdk_fp.dll
+gpapi.dll
+gpedit.dll
+gpprefcl.dll
+gpprnext.dll
+gpscript.dll
+gpsvc.dll
+gptext.dll
+Groupinghc.dll
+hal.dll
+HalExtIntcLpioDMA.dll
+hbaapi.dll
+hcproviders.dll
+HelpPaneProxy.dll
+hgcpl.dll
+hgprint.dll
+hhsetup.dll
+hid.dll
+hidserv.dll
+HiFiDAX2API.dll
+hlink.dll
+hnetcfg.dll
+hnetmon.dll
+hotplug.dll
+hotspotauth.dll
+httpapi.dll
+httpprxm.dll
+httpprxp.dll
+htui.dll
+ias.dll
+iasacct.dll
+iasads.dll
+iasdatastore.dll
+iashlpr.dll
+IasMigPlugin.dll
+iasnap.dll
+iaspolcy.dll
+iasrad.dll
+iasrecst.dll
+iassam.dll
+iassdo.dll
+iassvcs.dll
+ICEsoundAPO64.dll
+icfupgd.dll
+icm32.dll
+icmp.dll
+icmui.dll
+IconCodecService.dll
+icsigd.dll
+icsvc.dll
+IdCtrls.dll
+IdListen.dll
+idndl.dll
+IDStore.dll
+IEAdvpack.dll
+ieapfltr.dll
+iedkcs32.dll
+ieetwcollectorres.dll
+ieetwproxystub.dll
+ieframe.dll
+iepeers.dll
+iernonce.dll
+iertutil.dll
+iesetup.dll
+iesysprep.dll
+ieui.dll
+ifmon.dll
+ifsutil.dll
+ifsutilx.dll
+ig9icd64.dll
+iga64.dll
+igc64.dll
+igd10idpp64.dll
+igd10iumd64.dll
+igd11dxva64.dll
+igd12umd64.dll
+igdail64.dll
+igdbcl64.dll
+igdde64.dll
+igdDiag.dll
+igdfcl64.dll
+igdmcl64.dll
+igdmd64.dll
+igdrcl64.dll
+igdumdim64.dll
+igdusc64.dll
+igfx11cmrt64.dll
+igfxcmjit64.dll
+igfxcmrt64.dll
+igfxCoIn_v4300.dll
+igfxCoIn_v4534.dll
+igfxCoIn_v4565.dll
+igfxCUIServicePS.dll
+igfxDH.dll
+igfxDHLib.dll
+igfxDHLibv2_0.dll
+igfxDI.dll
+igfxDILib.dll
+igfxDILibv2_0.dll
+igfxDTCM.dll
+igfxEMLib.dll
+igfxEMLibv2_0.dll
+igfxexps.dll
+igfxLHM.dll
+igfxLHMLib.dll
+igfxLHMLibv2_0.dll
+igfxSDKLib.dll
+igfxSDKLibv2_0.dll
+iglhcp64.dll
+iglhsip64.dll
+igvk64.dll
+IKEEXT.DLL
+imagehlp.dll
+imageres.dll
+imagesp1.dll
+imapi.dll
+imapi2.dll
+imapi2fs.dll
+imgutil.dll
+imm32.dll
+inetcomm.dll
+inetmib1.dll
+inetpp.dll
+inetppui.dll
+INETRES.dll
+InkEd.dll
+input.dll
+InputSwitch.dll
+inseng.dll
+IntelOpenCL64.dll
+IntelSSTAPO.dll
+IntelSstCApoPropPage.dll
+IntelWiDiAAC64.dll
+IntelWiDiAudioFilter64.dll
+IntelWiDiDDEAgent64.dll
+IntelWiDiLogServer64.dll
+IntelWiDiMCUMD64.dll
+IntelWiDiMux64.dll
+IntelWiDiSecureSourceFilter64.dll
+IntelWiDiUtils64.dll
+IntelWiDiWinNextAgent64.dll
+Intel_OpenCL_ICD64.dll
+invagent.dll
+iologmsg.dll
+IPHLPAPI.DLL
+iphlpsvc.dll
+ipnathlp.dll
+iprtprio.dll
+iprtrmgr.dll
+ipsecsnp.dll
+IPSECSVC.DLL
+ipsmsnap.dll
+irclass.dll
+irmon.dll
+iscsicpl.dll
+iscsidsc.dll
+iscsied.dll
+iscsiexe.dll
+iscsilog.dll
+iscsium.dll
+iscsiwmi.dll
+iscsiwmiv2.dll
+itircl.dll
+itss.dll
+iuilp.dll
+iyuv_32.dll
+JavaScriptCollectionAgent.dll
+jscript.dll
+jscript9.dll
+jscript9diag.dll
+jsproxy.dll
+KAAPORT64.dll
+kbd101.dll
+kbd101a.dll
+kbd101b.dll
+kbd101c.dll
+kbd103.dll
+kbd106.dll
+kbd106n.dll
+KBDA1.DLL
+KBDA2.DLL
+KBDA3.DLL
+KBDAL.DLL
+KBDARME.DLL
+kbdarmph.dll
+kbdarmty.dll
+KBDARMW.DLL
+kbdax2.dll
+KBDAZE.DLL
+KBDAZEL.DLL
+KBDAZST.DLL
+KBDBASH.DLL
+KBDBE.DLL
+KBDBENE.DLL
+KBDBGPH.DLL
+KBDBGPH1.DLL
+KBDBHC.DLL
+KBDBLR.DLL
+KBDBR.DLL
+KBDBU.DLL
+KBDBUG.DLL
+KBDBULG.DLL
+KBDCA.DLL
+KBDCAN.DLL
+KBDCHER.DLL
+KBDCHERP.DLL
+KBDCR.DLL
+KBDCZ.DLL
+KBDCZ1.DLL
+KBDCZ2.DLL
+KBDDA.DLL
+KBDDIV1.DLL
+KBDDIV2.DLL
+KBDDV.DLL
+KBDES.DLL
+KBDEST.DLL
+KBDFA.DLL
+kbdfar.dll
+KBDFC.DLL
+KBDFI.DLL
+KBDFI1.DLL
+KBDFO.DLL
+KBDFR.DLL
+KBDFTHRK.DLL
+KBDGAE.DLL
+KBDGEO.DLL
+kbdgeoer.dll
+kbdgeome.dll
+kbdgeooa.dll
+kbdgeoqw.dll
+KBDGKL.DLL
+KBDGN.DLL
+KBDGR.DLL
+KBDGR1.DLL
+KBDGRLND.DLL
+KBDGTHC.DLL
+KBDHAU.DLL
+KBDHAW.DLL
+KBDHE.DLL
+KBDHE220.DLL
+KBDHE319.DLL
+KBDHEB.DLL
+kbdhebl3.dll
+KBDHELA2.DLL
+KBDHELA3.DLL
+KBDHEPT.DLL
+KBDHU.DLL
+KBDHU1.DLL
+kbdibm02.dll
+KBDIBO.DLL
+KBDIC.DLL
+KBDINASA.DLL
+KBDINBE1.DLL
+KBDINBE2.DLL
+KBDINBEN.DLL
+KBDINDEV.DLL
+KBDINEN.DLL
+KBDINGUJ.DLL
+KBDINHIN.DLL
+KBDINKAN.DLL
+KBDINMAL.DLL
+KBDINMAR.DLL
+KBDINORI.DLL
+KBDINPUN.DLL
+KBDINTAM.DLL
+KBDINTEL.DLL
+KBDINUK2.DLL
+KBDIR.DLL
+KBDIT.DLL
+KBDIT142.DLL
+KBDIULAT.DLL
+KBDJAV.DLL
+KBDJPN.DLL
+KBDKAZ.DLL
+KBDKHMR.DLL
+KBDKNI.DLL
+KBDKOR.DLL
+KBDKURD.DLL
+KBDKYR.DLL
+KBDLA.DLL
+KBDLAO.DLL
+kbdlisub.dll
+kbdlisus.dll
+kbdlk41a.dll
+KBDLT.DLL
+KBDLT1.DLL
+KBDLT2.DLL
+KBDLV.DLL
+KBDLV1.DLL
+KBDLVST.DLL
+KBDMAC.DLL
+KBDMACST.DLL
+KBDMAORI.DLL
+KBDMLT47.DLL
+KBDMLT48.DLL
+KBDMON.DLL
+KBDMONMO.DLL
+KBDMONST.DLL
+KBDMYAN.DLL
+KBDNE.DLL
+kbdnec.dll
+kbdnec95.dll
+kbdnecat.dll
+kbdnecnt.dll
+KBDNEPR.DLL
+kbdnko.dll
+KBDNO.DLL
+KBDNO1.DLL
+KBDNSO.DLL
+KBDNTL.DLL
+KBDOGHAM.DLL
+KBDOLCH.DLL
+KBDOLDIT.DLL
+KBDOSM.DLL
+KBDPASH.DLL
+kbdphags.dll
+KBDPL.DLL
+KBDPL1.DLL
+KBDPO.DLL
+KBDRO.DLL
+KBDROPR.DLL
+KBDROST.DLL
+KBDRU.DLL
+KBDRU1.DLL
+KBDRUM.DLL
+KBDSF.DLL
+KBDSG.DLL
+KBDSL.DLL
+KBDSL1.DLL
+KBDSMSFI.DLL
+KBDSMSNO.DLL
+KBDSN1.DLL
+KBDSORA.DLL
+KBDSOREX.DLL
+KBDSORS1.DLL
+KBDSORST.DLL
+KBDSP.DLL
+KBDSW.DLL
+KBDSW09.DLL
+KBDSYR1.DLL
+KBDSYR2.DLL
+KBDTAILE.DLL
+KBDTAJIK.DLL
+KBDTAT.DLL
+KBDTH0.DLL
+KBDTH1.DLL
+KBDTH2.DLL
+KBDTH3.DLL
+KBDTIFI.DLL
+KBDTIFI2.DLL
+KBDTIPRC.DLL
+KBDTIPRD.DLL
+KBDTT102.DLL
+KBDTUF.DLL
+KBDTUQ.DLL
+KBDTURME.DLL
+KBDTZM.DLL
+KBDUGHR.DLL
+KBDUGHR1.DLL
+KBDUK.DLL
+KBDUKX.DLL
+KBDUR.DLL
+KBDUR1.DLL
+KBDURDU.DLL
+KBDUS.DLL
+KBDUSA.DLL
+KBDUSL.DLL
+KBDUSR.DLL
+KBDUSX.DLL
+KBDUZB.DLL
+KBDVNTC.DLL
+KBDWOL.DLL
+KBDYAK.DLL
+KBDYBA.DLL
+KBDYCC.DLL
+KBDYCL.DLL
+kd.dll
+kd1394.dll
+kdcom.dll
+kdhv1394.dll
+kdnet.dll
+KdsCli.dll
+kdstub.dll
+kdusb.dll
+kd_02_10df.dll
+kd_02_10ec.dll
+kd_02_14e4.dll
+kd_02_15b3.dll
+kd_02_1969.dll
+kd_02_19a2.dll
+kd_02_8086.dll
+keepaliveprovider.dll
+kerberos.dll
+kernel.appcore.dll
+kernel32.dll
+KernelBase.dll
+kernelceip.dll
+KeyboardFilterCore.dll
+KeyboardFilterSvc.dll
+keyiso.dll
+keymgr.dll
+KMSVC.DLL
+korwbrkr.dll
+ksuser.dll
+ktmw32.dll
+l2gpstore.dll
+l2nacp.dll
+L2SecHC.dll
+LangCleanupSysprepAction.dll
+LAPRXY.DLL
+licmgr10.dll
+linkinfo.dll
+ListSvc.dll
+livessp.dll
+LldpNotify.dll
+lltdapi.dll
+lltdres.dll
+lltdsvc.dll
+lmhsvc.dll
+loadperf.dll
+localsec.dll
+localspl.dll
+localui.dll
+LocationApi.dll
+LockScreenContent.dll
+LockScreenContentHost.dll
+loghours.dll
+logoncli.dll
+lpk.dll
+lpksetupproxyserv.dll
+lsasrv.dll
+LSCSHostPolicy.dll
+lsm.dll
+lsmproxy.dll
+luainstall.dll
+lz32.dll
+Magnification.dll
+MaintenanceUI.dll
+mapi32.dll
+mapistub.dll
+MaxxAudioAPO20.dll
+MaxxAudioAPO30.dll
+MaxxAudioAPO4064.dll
+MaxxAudioAPO5064.dll
+MaxxAudioAPO6064.dll
+MaxxAudioAPO7064.dll
+MaxxAudioAPOShell64.dll
+MaxxAudioEQ64.dll
+MaxxAudioRealtek64.dll
+MaxxSpeechAPO64.dll
+MaxxVoiceAPO2064.dll
+MaxxVoiceAPO3064.dll
+MaxxVoiceAPO4064.dll
+MaxxVolumeSDAPO.dll
+MbaeApi.dll
+MbaeApiPublic.dll
+MbaeXmlParser.dll
+mbsmsapi.dll
+mbussdapi.dll
+MCEWMDRMNDBootstrap.dll
+mciavi32.dll
+mcicda.dll
+mciqtz32.dll
+mciseq.dll
+mciwave.dll
+mcupdate_AuthenticAMD.dll
+mcupdate_GenuineIntel.dll
+McxDriv.dll
+mdminst.dll
+mdmregistration.dll
+MemoryDiagnostic.dll
+MetroIntelGenericUIFramework.dll
+mf.dll
+mf3216.dll
+mfAACEnc.dll
+mfasfsrcsnk.dll
+mfc100.dll
+mfc100chs.dll
+mfc100cht.dll
+mfc100deu.dll
+mfc100enu.dll
+mfc100esn.dll
+mfc100fra.dll
+mfc100ita.dll
+mfc100jpn.dll
+mfc100kor.dll
+mfc100rus.dll
+mfc100u.dll
+mfc42.dll
+mfc42u.dll
+MFCaptureEngine.dll
+mfcm100.dll
+mfcm100u.dll
+mfcore.dll
+mfcsubs.dll
+mfds.dll
+mfdvdec.dll
+mferror.dll
+mfh264enc.dll
+MFMediaEngine.dll
+mfmjpegdec.dll
+mfmp4srcsnk.dll
+mfmpeg2srcsnk.dll
+mfnetcore.dll
+mfnetsrc.dll
+mfplat.dll
+MFPlay.dll
+mfps.dll
+mfreadwrite.dll
+mfsrcsnk.dll
+mfsvr.dll
+mftranscode.dll
+mfvdsp.dll
+MFWMAAEC.DLL
+mgmtapi.dll
+mi.dll
+mibincodec.dll
+microsoft-windows-battery-events.dll
+microsoft-windows-hal-events.dll
+microsoft-windows-kernel-pnp-events.dll
+microsoft-windows-kernel-power-events.dll
+microsoft-windows-kernel-processor-power-events.dll
+microsoft-windows-pdc.dll
+microsoft-windows-processor-aggregator-events.dll
+microsoft-windows-sleepstudy-events.dll
+microsoft-windows-storage-tiering-events.dll
+microsoft-windows-system-events.dll
+Microsoft.Management.Infrastructure.Native.Unmanaged.dll
+MicrosoftAccountTokenProvider.dll
+midimap.dll
+migflt.dll
+migisol.dll
+miguiresource.dll
+mimefilt.dll
+mimofcodec.dll
+MirrorDrvCompat.dll
+mispace.dll
+MISS_APO.dll
+miutils.dll
+mlang.dll
+mmcbase.dll
+mmci.dll
+mmcico.dll
+mmcndmgr.dll
+mmcshext.dll
+mmcss.dll
+MMDevAPI.dll
+mmres.dll
+modemui.dll
+montr_ci.dll
+moricons.dll
+MP3DMOD.DLL
+MP43DECD.DLL
+MP4SDECD.DLL
+mpeval.dll
+MPG4DECD.DLL
+mpr.dll
+mprapi.dll
+mprddm.dll
+mprdim.dll
+mprext.dll
+mprmsg.dll
+MPSSVC.dll
+mpunits.dll
+MrmCoreR.dll
+MrmIndexer.dll
+mrt100.dll
+mrt_map.dll
+msaatext.dll
+MSAC3ENC.DLL
+msacm32.dll
+msafd.dll
+msasn1.dll
+MSAudDecMFT.dll
+msaudite.dll
+msauserext.dll
+mscandui.dll
+mscat32.dll
+msched.dll
+msclmd.dll
+mscms.dll
+mscoree.dll
+mscorier.dll
+mscories.dll
+msctf.dll
+MsCtfMonitor.dll
+msctfp.dll
+msctfui.dll
+msctfuimanager.dll
+msdadiag.dll
+msdart.dll
+msdelta.dll
+msdmo.dll
+msdri.dll
+msdrm.dll
+msdtckrm.dll
+msdtclog.dll
+msdtcprx.dll
+msdtctm.dll
+msdtcuiu.dll
+msdtcVSp1res.dll
+msfeeds.dll
+msfeedsbs.dll
+msftedit.dll
+mshtml.dll
+MshtmlDac.dll
+mshtmled.dll
+mshtmler.dll
+msi.dll
+MsiCofire.dll
+msidcrl40.dll
+msident.dll
+msidle.dll
+msidntld.dll
+msieftp.dll
+msihnd.dll
+msiltcfg.dll
+msimg32.dll
+msimsg.dll
+msimtf.dll
+msisip.dll
+msiwer.dll
+mskeyprotcli.dll
+mskeyprotect.dll
+msls31.dll
+msmpeg2adec.dll
+MSMPEG2ENC.DLL
+msmpeg2vdec.dll
+msnetobj.dll
+msobjs.dll
+msoeacct.dll
+msoert2.dll
+MSOIDSSP.DLL
+mspatcha.dll
+mspatchc.dll
+msports.dll
+msprivs.dll
+msrahc.dll
+msrating.dll
+msrdc.dll
+MsRdpWebAccess.dll
+msrle32.dll
+msscntrs.dll
+msscp.dll
+mssha.dll
+msshavmsg.dll
+msshooks.dll
+mssign32.dll
+mssip32.dll
+mssitlb.dll
+MsSpellCheckingFacility.dll
+mssph.dll
+mssphtb.dll
+mssprxy.dll
+mssrch.dll
+mssvp.dll
+mstask.dll
+msTextPrediction.dll
+mstscax.dll
+msutb.dll
+msv1_0.dll
+msvcirt.dll
+msvcp100.dll
+msvcp110.dll
+msvcp120.dll
+msvcp120_clr0400.dll
+msvcp60.dll
+msvcr100.dll
+msvcr100_clr0400.dll
+msvcr110.dll
+msvcr120.dll
+msvcr120_clr0400.dll
+msvcrt.dll
+msvfw32.dll
+msvidc32.dll
+MSVidCtl.dll
+MSVideoDSP.dll
+msvproc.dll
+MSWB7.dll
+MSWB70011.dll
+MSWB7001E.dll
+MSWB70404.dll
+MSWB70804.dll
+mswmdm.dll
+mswsock.dll
+msxml3.dll
+msxml3r.dll
+msxml6.dll
+msxml6r.dll
+msyuv.dll
+mtxclu.dll
+mtxdm.dll
+mtxex.dll
+mtxoci.dll
+muifontsetup.dll
+MUILanguageCleanup.dll
+mycomput.dll
+mydocs.dll
+NAHIMICAPOlfx.dll
+NahimicAPONSControl.dll
+NAHIMICV2apo.dll
+NAPCRYPT.DLL
+napdsnap.dll
+NAPHLPR.DLL
+NapiNSP.dll
+napipsec.dll
+NAPMONTR.DLL
+NaturalLanguage6.dll
+NcaApi.dll
+NcaSvc.dll
+ncbservice.dll
+NcdAutoSetup.dll
+NcdProp.dll
+nci.dll
+ncobjapi.dll
+ncrypt.dll
+ncryptprov.dll
+ncryptsslp.dll
+ncs2dmix.dll
+ncs2instutility.dll
+Ncs2Setp.dll
+ncscolib.dll
+ncsi.dll
+ncuprov.dll
+nddeapi.dll
+ndfapi.dll
+ndfetw.dll
+ndfhcdiscovery.dll
+ndiscapCfg.dll
+ndishc.dll
+NdisImPlatform.dll
+ndproxystub.dll
+nduprov.dll
+negoexts.dll
+netapi32.dll
+netbios.dll
+netcenter.dll
+netcfgx.dll
+netcorehc.dll
+netdiagfx.dll
+netevent.dll
+netfxperf.dll
+neth.dll
+netid.dll
+netiohlp.dll
+netjoin.dll
+netlogon.dll
+netman.dll
+netmsg.dll
+netplwiz.dll
+netprofm.dll
+netprofmsvc.dll
+netprovisionsp.dll
+NetSetupApi.dll
+netshell.dll
+nettrace.dll
+netutils.dll
+NetVscCoinstall.dll
+netvscres.dll
+networkexplorer.dll
+networkitemfactory.dll
+NetworkStatus.dll
+newdev.dll
+NicCo4.dll
+NicInstD.dll
+ninput.dll
+NL7Data0011.dll
+NL7Data001E.dll
+NL7Data0404.dll
+NL7Data0804.dll
+NL7Lexicons0011.dll
+NL7Lexicons001E.dll
+NL7Lexicons0404.dll
+NL7Lexicons0804.dll
+NL7Models0011.dll
+NL7Models001E.dll
+NL7Models0404.dll
+NL7Models0804.dll
+nlaapi.dll
+nlahc.dll
+nlasvc.dll
+nlhtml.dll
+nlmgp.dll
+nlmproxy.dll
+nlmsprep.dll
+nlsbres.dll
+NlsData0000.dll
+NlsData0002.dll
+NlsData0003.dll
+NlsData0007.dll
+NlsData0009.dll
+NlsData000a.dll
+NlsData000c.dll
+NlsData000d.dll
+NlsData000f.dll
+NlsData0010.dll
+NlsData0018.dll
+NlsData001a.dll
+NlsData001b.dll
+NlsData001d.dll
+NlsData0020.dll
+NlsData0021.dll
+NlsData0022.dll
+NlsData0024.dll
+NlsData0026.dll
+NlsData0027.dll
+NlsData002a.dll
+NlsData0039.dll
+NlsData003e.dll
+NlsData0045.dll
+NlsData0046.dll
+NlsData0047.dll
+NlsData0049.dll
+NlsData004a.dll
+NlsData004b.dll
+NlsData004c.dll
+NlsData004e.dll
+NlsData0414.dll
+NlsData0416.dll
+NlsData0816.dll
+NlsData081a.dll
+NlsData0c1a.dll
+Nlsdl.dll
+NlsLexicons0002.dll
+NlsLexicons0003.dll
+NlsLexicons0007.dll
+NlsLexicons0009.dll
+NlsLexicons000a.dll
+NlsLexicons000c.dll
+NlsLexicons000d.dll
+NlsLexicons000f.dll
+NlsLexicons0010.dll
+NlsLexicons0018.dll
+NlsLexicons001a.dll
+NlsLexicons001b.dll
+NlsLexicons001d.dll
+NlsLexicons0020.dll
+NlsLexicons0021.dll
+NlsLexicons0022.dll
+NlsLexicons0024.dll
+NlsLexicons0026.dll
+NlsLexicons0027.dll
+NlsLexicons002a.dll
+NlsLexicons0039.dll
+NlsLexicons003e.dll
+NlsLexicons0045.dll
+NlsLexicons0046.dll
+NlsLexicons0047.dll
+NlsLexicons0049.dll
+NlsLexicons004a.dll
+NlsLexicons004b.dll
+NlsLexicons004c.dll
+NlsLexicons004e.dll
+NlsLexicons0414.dll
+NlsLexicons0416.dll
+NlsLexicons0816.dll
+NlsLexicons081a.dll
+NlsLexicons0c1a.dll
+normaliz.dll
+npmproxy.dll
+nrpsrv.dll
+nshhttp.dll
+nshipsec.dll
+nshwfp.dll
+nsi.dll
+nsisvc.dll
+ntasn1.dll
+ntdll.dll
+ntdsapi.dll
+ntlanman.dll
+ntlanui2.dll
+ntmarta.dll
+ntprint.dll
+ntshrui.dll
+ntvdm64.dll
+objsel.dll
+occache.dll
+ocsetapi.dll
+odbc32.dll
+odbcbcp.dll
+odbcconf.dll
+odbccp32.dll
+odbccr32.dll
+odbccu32.dll
+odbcint.dll
+odbctrac.dll
+OEMLicense.dll
+offfilt.dll
+offreg.dll
+ogldrv.dll
+ole32.dll
+oleacc.dll
+oleacchooks.dll
+oleaccrc.dll
+oleaut32.dll
+oledlg.dll
+oleprn.dll
+OnDemandConnRouteHelper.dll
+onex.dll
+onexui.dll
+OobeFldr.dll
+OpcServices.dll
+OpenCL.DLL
+opengl32.dll
+osbaseln.dll
+OskSupport.dll
+osuninst.dll
+P2P.dll
+P2PGraph.dll
+p2pnetsh.dll
+p2psvc.dll
+packager.dll
+PackageStateRoaming.dll
+Packet.dll
+panmap.dll
+pautoenr.dll
+pcacli.dll
+pcadm.dll
+pcaevts.dll
+pcasvc.dll
+pcaui.dll
+PCPKsp.dll
+PCPTpm12.dll
+pcsvDevice.dll
+pcwum.dll
+pcwutl.dll
+pdh.dll
+pdhui.dll
+PeerDist.dll
+PeerDistAD.dll
+PeerDistCacheProvider.dll
+PeerDistCleaner.dll
+PeerDistHttpTrans.dll
+PeerDistSh.dll
+PeerDistSvc.dll
+PeerDistWSDDiscoProv.dll
+perfctrs.dll
+perfdisk.dll
+perfnet.dll
+perfos.dll
+perfproc.dll
+perftrack.dll
+perfts.dll
+PhotoMetadataHandler.dll
+photowiz.dll
+pid.dll
+pidgenx.dll
+pifmgr.dll
+pku2u.dll
+pla.dll
+playlistfolder.dll
+PlaySndSrv.dll
+PlayToDevice.dll
+PlayToManager.dll
+PlayToStatusProvider.dll
+ploptin.dll
+pmcsnap.dll
+pngfilt.dll
+pnidui.dll
+pnpclean.dll
+pnppolicy.dll
+pnpts.dll
+pnpui.dll
+PNPXAssoc.dll
+PNPXAssocPrx.dll
+pnrpauto.dll
+Pnrphc.dll
+pnrpnsp.dll
+pnrpsvc.dll
+polstore.dll
+PortableDeviceApi.dll
+PortableDeviceClassExtension.dll
+PortableDeviceConnectApi.dll
+PortableDeviceStatus.dll
+PortableDeviceSyncProvider.dll
+PortableDeviceTypes.dll
+PortableDeviceWiaCompat.dll
+PortableDeviceWMDRM.dll
+pots.dll
+powercpl.dll
+PowerWmiProvider.dll
+powrprof.dll
+ppcsnap.dll
+PresentationHostProxy.dll
+prflbmsg.dll
+PrintDialogs.dll
+printfilterpipelineprxy.dll
+PrintIsolationProxy.dll
+printui.dll
+prm0001.dll
+prm0005.dll
+prm0006.dll
+prm0007.dll
+prm0008.dll
+prm0009.dll
+prm000b.dll
+prm000e.dll
+prm0013.dll
+prm0015.dll
+prm0019.dll
+prm001f.dll
+prncache.dll
+prnfldr.dll
+prnntfy.dll
+prntvpt.dll
+procinst.dll
+profapi.dll
+profext.dll
+profprov.dll
+profsvc.dll
+profsvcext.dll
+PRONtObj.dll
+propsys.dll
+provcore.dll
+provsvc.dll
+provthrd.dll
+ProximityCommon.dll
+ProximityCommonPal.dll
+ProximityRtapiPal.dll
+ProximityService.dll
+ProximityServicePal.dll
+prvdmofcomp.dll
+psapi.dll
+PSHED.DLL
+psisdecd.dll
+PSModuleDiscoveryProvider.dll
+psmsrv.dll
+pstask.dll
+pstorec.dll
+puiapi.dll
+puiobj.dll
+PurchaseWindowsLicense.dll
+pwlauncher.dll
+pwrshplugin.dll
+pwsso.dll
+QAGENT.DLL
+QAGENTRT.DLL
+qasf.dll
+qcap.dll
+QCLIPROV.DLL
+qdv.dll
+qdvd.dll
+qedit.dll
+qedwipes.dll
+qmgr.dll
+qmgrprxy.dll
+QSHVHOST.DLL
+QSVRMGMT.DLL
+quartz.dll
+Query.dll
+QUTIL.DLL
+qwave.dll
+R4EEA64A.dll
+R4EED64A.dll
+R4EEG64A.dll
+R4EEL64A.dll
+R4EEP64A.dll
+RacEngn.dll
+racpldlg.dll
+radardt.dll
+radarrs.dll
+RADCUI.dll
+rasadhlp.dll
+rasapi32.dll
+rasauto.dll
+rascfg.dll
+raschap.dll
+raschapext.dll
+RasClusterRes.dll
+rasctrs.dll
+rascustom.dll
+rasdiag.dll
+rasdlg.dll
+rasgcw.dll
+rasman.dll
+rasmans.dll
+rasmbmgr.dll
+RASMM.dll
+rasmontr.dll
+rasmxs.dll
+rasplap.dll
+rasppp.dll
+rasser.dll
+rastapi.dll
+rastls.dll
+rastlsext.dll
+RCoInstII64.dll
+rdbui.dll
+rdpcfgex.dll
+rdpcore.dll
+rdpcorets.dll
+rdpencom.dll
+rdpendp.dll
+RdpSaPs.dll
+rdpudd.dll
+RDSAppXHelper.dll
+rdsdwmdr.dll
+rdvidcrl.dll
+rdvvmtransport.dll
+ReAgent.dll
+ReAgentTask.dll
+recovery.dll
+regapi.dll
+RegCtrl.dll
+regidle.dll
+regsvc.dll
+ReInfo.dll
+remotepg.dll
+RemoveDeviceContextHandler.dll
+RemoveDeviceElevated.dll
+RESAMPLEDMO.DLL
+reseteng.dll
+resutils.dll
+rfxvmt.dll
+rgb9rast.dll
+riched20.dll
+riched32.dll
+RltkAPO64.dll
+RMapi.dll
+rnr20.dll
+RoamingSecurity.dll
+rometadata.dll
+RotMgr.dll
+RP3DAA64.dll
+RP3DHT64.dll
+RpcEpMap.dll
+rpchttp.dll
+RpcNs4.dll
+rpcnsh.dll
+rpcrt4.dll
+RpcRtRemote.dll
+rpcss.dll
+rsaenh.dll
+rshx32.dll
+RstrtMgr.dll
+RTCOM64.dll
+RtDataProc64.dll
+RTEED64A.dll
+RTEEG64A.dll
+RTEEL64A.dll
+RTEEP64A.dll
+rtffilt.dll
+RtkApi64.dll
+RtkCfg64.dll
+RtkCoLDR64.dll
+RtlCPAPI64.dll
+rtm.dll
+RtPgEx64.dll
+rtutils.dll
+RTWorkQ.dll
+samcli.dll
+samlib.dll
+samsrv.dll
+sas.dll
+sbe.dll
+sbeio.dll
+sberes.dll
+scansetting.dll
+SCardDlg.dll
+SCardSvr.dll
+scavengeui.dll
+sccls.dll
+ScDeviceEnum.dll
+scecli.dll
+scesrv.dll
+scext.dll
+schannel.dll
+schedcli.dll
+schedsvc.dll
+scksp.dll
+scripto.dll
+scrobj.dll
+scrptadm.dll
+scrrun.dll
+sdhcinst.dll
+sdiageng.dll
+sdiagprv.dll
+sdiagschd.dll
+sdohlp.dll
+SEAPO64.dll
+SearchFolder.dll
+sechost.dll
+seclogon.dll
+SECOMN64.dll
+secproc.dll
+secproc_isv.dll
+secproc_ssp.dll
+secproc_ssp_isv.dll
+secur32.dll
+security.dll
+SEHDRA64.dll
+sendmail.dll
+Sens.dll
+SensApi.dll
+SensorPerformanceEvents.dll
+SensorsApi.dll
+SensorsClassExtension.dll
+SensorsCpl.dll
+sensrsvc.dll
+serialui.dll
+serwvdrv.dll
+SessEnv.dll
+setbcdlocale.dll
+SetNetworkLocation.dll
+SetProxyCredential.dll
+SettingMonitor.dll
+SettingsHandlers.dll
+SettingSync.dll
+SettingSyncCore.dll
+SettingSyncPolicy.dll
+setupapi.dll
+setupcln.dll
+setupetw.dll
+SFAPO64.dll
+sfc.dll
+SFCOM64.dll
+sfc_os.dll
+SFNHK64.dll
+SFSS_APO.dll
+shacct.dll
+sharemediacpl.dll
+SHCore.dll
+shdocvw.dll
+shell32.dll
+shellstyle.dll
+shfolder.dll
+shgina.dll
+shimeng.dll
+shimgvw.dll
+shlwapi.dll
+shpafact.dll
+shsetup.dll
+shsvcs.dll
+shunimpl.dll
+shwebsvc.dll
+signdrv.dll
+SimAuth.dll
+SimCfg.dll
+sisbkup.dll
+SkyDriveShell.dll
+SkyDriveTelemetry.dll
+sl3apo64.dll
+slc.dll
+slcext.dll
+slcnt64.dll
+slprp64.dll
+slpts.dll
+slr100.dll
+sltech64.dll
+slwga.dll
+SmartcardCredentialProvider.dll
+SmartCardSimulator.dll
+SMBHelperClass.dll
+smbwmiv2.dll
+SmiEngine.dll
+smphost.dll
+SmsDeviceAccessRevocation.dll
+SMSRouter.dll
+SndVolSSO.dll
+snmpapi.dll
+SNTSearch.dll
+softkbd.dll
+softpub.dll
+SortServer2003Compat.dll
+SortWindows61.dll
+SortWindows6Compat.dll
+SpaceControl.dll
+spbcd.dll
+spcompat.dll
+spfileq.dll
+SPInf.dll
+spmpm.dll
+spnet.dll
+spoolss.dll
+spopk.dll
+spp.dll
+sppc.dll
+sppcext.dll
+sppcomapi.dll
+sppcommdlg.dll
+sppinst.dll
+sppnp.dll
+sppobjs.dll
+sppwinob.dll
+sppwmi.dll
+spwinsat.dll
+spwizeng.dll
+spwizimg.dll
+spwizres.dll
+spwmp.dll
+sqlcecompact40.dll
+sqlceoledb40.dll
+sqlceqp40.dll
+sqlcese40.dll
+SqlServerSpatial110.dll
+sqlsrv32.dll
+sqmapi.dll
+SRAPO64.dll
+srchadmin.dll
+srclient.dll
+SRCOM.dll
+SRCOM64.dll
+srcore.dll
+SrEvents.dll
+SRH.dll
+srhelper.dll
+srm.dll
+srmclient.dll
+srmlib.dll
+srmscan.dll
+srmshell.dll
+srmstormod.dll
+srmtrace.dll
+srm_ps.dll
+SrpUxNativeSnapIn.dll
+SRRPTR64.dll
+srrstr.dll
+SRSHP64.dll
+SRSTSH64.dll
+SRSTSX64.dll
+SRSWOW64.dll
+srumapi.dll
+srumsvc.dll
+srvcli.dll
+srvsvc.dll
+srwmi.dll
+sscore.dll
+sscoreext.dll
+ssdpapi.dll
+ssdpsrv.dll
+sspicli.dll
+sspisrv.dll
+SSShim.dll
+sstpsvc.dll
+Startupscan.dll
+stclient.dll
+sti.dll
+sti_ci.dll
+stobject.dll
+StorageContextHandler.dll
+storagewmi.dll
+storagewmi_passthru.dll
+storewuauth.dll
+Storprop.dll
+StorSvc.dll
+streamci.dll
+StructuredQuery.dll
+SubscriptionMgr.dll
+sud.dll
+svsvc.dll
+swprv.dll
+sxproxy.dll
+sxs.dll
+sxshared.dll
+sxssrv.dll
+sxsstore.dll
+SyncCenter.dll
+synceng.dll
+SyncEngine.dll
+SyncHostps.dll
+SyncInfrastructure.dll
+SyncInfrastructureps.dll
+Syncreg.dll
+syncui.dll
+sysclass.dll
+SysFxUI.dll
+sysmain.dll
+sysntfy.dll
+syssetup.dll
+systemcpl.dll
+SystemEventsBrokerClient.dll
+SystemEventsBrokerServer.dll
+SystemSettings.DeviceEncryptionHandlers.dll
+SystemSettings.Handlers.dll
+SystemSettingsAdminFlowUI.dll
+SystemSettingsDatabase.dll
+t2embed.dll
+Tabbtn.dll
+TabbtnEx.dll
+TabSvc.dll
+tadefxapo.dll
+tadefxapo264.dll
+tapi3.dll
+tapi32.dll
+tapilua.dll
+TapiMigPlugin.dll
+tapiperf.dll
+tapisrv.dll
+TapiSysprep.dll
+tapiui.dll
+taskbarcpl.dll
+taskcomp.dll
+taskschd.dll
+TaskSchdPS.dll
+tbs.dll
+tcpipcfg.dll
+TcpipSetup.dll
+tcpmib.dll
+tcpmon.dll
+tcpmonui.dll
+tdh.dll
+tepeqapo64.dll
+termmgr.dll
+termsrv.dll
+TetheringIeProvider.dll
+TetheringMgr.dll
+TetheringStation.dll
+themecpl.dll
+themeservice.dll
+themeui.dll
+threadpoolwinrt.dll
+thumbcache.dll
+TimeBrokerClient.dll
+TimeBrokerServer.dll
+TimeDateMUICallback.dll
+TimeSyncTask.dll
+tlscsp.dll
+tosade.dll
+tosasfapo64.dll
+toseaeapo64.dll
+tossaeapo64.dll
+tossaemaxapo64.dll
+tpmcompc.dll
+TpmTasks.dll
+tpmvsc.dll
+tquery.dll
+traffic.dll
+trkwks.dll
+tsbyuv.dll
+tscfgwmi.dll
+TSChannel.dll
+tsddd.dll
+TSErrRedir.dll
+tsgqec.dll
+tsmf.dll
+TSpkg.dll
+TsPnPRdrCoInstaller.dll
+tspubwmi.dll
+tssrvlic.dll
+TsUsbGDCoInstaller.dll
+TsUsbRedirectionGroupPolicyExtension.dll
+TSWorkspace.dll
+TtlsAuth.dll
+TtlsCfg.dll
+TtlsExt.dll
+tvratings.dll
+twext.dll
+twinapi.appcore.dll
+twinapi.dll
+twinui.appcore.dll
+twinui.dll
+txflog.dll
+txfw32.dll
+tzres.dll
+tzsyncres.dll
+ubpm.dll
+ucmhc.dll
+ucrtbase.dll
+udhisapi.dll
+uDWM.dll
+uexfat.dll
+ufat.dll
+UIAnimation.dll
+UIAutomationCore.dll
+UIAutomationCoreRes.dll
+uicom.dll
+uireng.dll
+UIRibbon.dll
+UIRibbonRes.dll
+ulib.dll
+umb.dll
+umdmxfrm.dll
+umpnpmgr.dll
+umpo.dll
+umpoext.dll
+umpowmi.dll
+umrdp.dll
+unattend.dll
+unimdmat.dll
+uniplat.dll
+untfs.dll
+upnp.dll
+upnphost.dll
+uReFS.dll
+ureg.dll
+url.dll
+urlmon.dll
+usbceip.dll
+usbmon.dll
+usbperf.dll
+usbui.dll
+user32.dll
+UserAccountControlSettings.dll
+usercpl.dll
+userenv.dll
+userinitext.dll
+UserLanguageProfileCallback.dll
+UserLanguagesCpl.dll
+usp10.dll
+ustprov.dll
+UtcResources.dll
+utildll.dll
+uudf.dll
+UXInit.dll
+uxlib.dll
+uxlibres.dll
+uxtheme.dll
+VAN.dll
+Vault.dll
+vaultcli.dll
+VaultRoaming.dll
+vaultsvc.dll
+vbscript.dll
+vccorlib110.dll
+vccorlib120.dll
+vcomp100.dll
+vdsbas.dll
+vdsdyn.dll
+vdsutil.dll
+vdsvd.dll
+vds_ps.dll
+verifier.dll
+version.dll
+vfwwdm32.dll
+vid.dll
+VIDRESZR.DLL
+virtdisk.dll
+VmApplicationHealthMonitorProxy.dll
+vmbuspipe.dll
+vmbuspiper.dll
+vmbusres.dll
+VmdCoinstall.dll
+vmicres.dll
+vmictimeprovider.dll
+vmnetbridge.dll
+vmrdvcore.dll
+vmstorfltres.dll
+vnetinst.dll
+vnetlib64.dll
+vpnike.dll
+vpnikeapi.dll
+VscMgrPS.dll
+vsocklib.dll
+vssapi.dll
+vsstrace.dll
+vss_ps.dll
+vulkan-1-1-0-33-0.dll
+vulkan-1.dll
+w32time.dll
+w32topl.dll
+WABSyncProvider.dll
+WavDest.dll
+wavemsp.dll
+WavesGUILib64.dll
+wbemcomn.dll
+wbiosrvc.dll
+wcl.dll
+wclEtw.dll
+wclPowrProf.dll
+wclSqm.dll
+wclUnicode.dll
+wclWdi.dll
+wcmapi.dll
+wcmcsp.dll
+wcmsvc.dll
+WcnApi.dll
+wcncsvc.dll
+WcnEapAuthProxy.dll
+WcnEapPeerProxy.dll
+WcnNetsh.dll
+wcnwiz.dll
+WcsPlugInService.dll
+wdc.dll
+WdfCoInstaller01007.dll
+WdfCoInstaller01011.dll
+Wdfres.dll
+wdi.dll
+wdiasqmmodule.dll
+wdigest.dll
+wdscore.dll
+WebcamUi.dll
+webcheck.dll
+WebClnt.dll
+webio.dll
+webservices.dll
+Websocket.dll
+wecapi.dll
+wecsvc.dll
+wephostsvc.dll
+wer.dll
+werconcpl.dll
+wercplsupport.dll
+werdiagcontroller.dll
+wersvc.dll
+werui.dll
+wevtapi.dll
+wevtfwd.dll
+wevtsvc.dll
+wfapigp.dll
+wfdprov.dll
+WfHC.dll
+WFSR.dll
+whealogr.dll
+whhelper.dll
+wiaaut.dll
+wiadefui.dll
+wiadss.dll
+WiaExtensionHost64.dll
+wiarpc.dll
+wiascanprofiles.dll
+wiaservc.dll
+wiashext.dll
+wiatrace.dll
+WiFiDisplay.dll
+wimgapi.dll
+win32spl.dll
+winbici.dll
+winbio.dll
+winbrand.dll
+wincorlib.dll
+wincredprovider.dll
+Windows.ApplicationModel.Background.SystemEventsBroker.dll
+Windows.ApplicationModel.Background.TimeBroker.dll
+Windows.ApplicationModel.dll
+Windows.ApplicationModel.Store.dll
+Windows.ApplicationModel.Store.TestingFramework.dll
+Windows.Data.Pdf.dll
+Windows.Devices.Background.dll
+Windows.Devices.Background.ps.dll
+Windows.Devices.Bluetooth.dll
+Windows.Devices.Custom.dll
+Windows.Devices.Custom.ps.dll
+Windows.Devices.Enumeration.dll
+Windows.Devices.Enumeration.ps.dll
+Windows.Devices.Geolocation.dll
+Windows.Devices.HumanInterfaceDevice.dll
+Windows.Devices.PointOfService.dll
+Windows.Devices.Portable.dll
+Windows.Devices.Printers.Extensions.dll
+Windows.Devices.Scanners.dll
+Windows.Devices.Sensors.dll
+Windows.Devices.SmartCards.dll
+Windows.Devices.Usb.dll
+Windows.Devices.WiFiDirect.dll
+Windows.Globalization.dll
+Windows.Globalization.Fontgroups.dll
+Windows.Graphics.dll
+Windows.Graphics.Printing.dll
+Windows.Help.Runtime.dll
+windows.immersiveshell.serviceprovider.dll
+Windows.Management.Workplace.WorkplaceSettings.dll
+Windows.Media.Devices.dll
+Windows.Media.dll
+Windows.Media.MediaControl.dll
+Windows.Media.Renewal.dll
+Windows.Media.SpeechSynthesis.dll
+Windows.Media.Streaming.dll
+Windows.Media.Streaming.ps.dll
+Windows.Networking.BackgroundTransfer.ContentPrefetchTask.dll
+Windows.Networking.BackgroundTransfer.dll
+Windows.Networking.Connectivity.dll
+Windows.Networking.dll
+Windows.Networking.HostName.dll
+Windows.Networking.NetworkOperators.HotspotAuthentication.dll
+Windows.Networking.Proximity.dll
+Windows.Networking.Sockets.PushEnabledApplication.dll
+Windows.Networking.Vpn.dll
+Windows.Security.Authentication.OnlineId.dll
+Windows.Security.Credentials.UI.CredentialPicker.dll
+Windows.Security.Credentials.UI.UserConsentVerifier.dll
+Windows.Shell.Search.UriHandler.dll
+Windows.Storage.ApplicationData.dll
+Windows.Storage.Compression.dll
+Windows.System.Display.dll
+Windows.System.Profile.HardwareId.dll
+Windows.System.Profile.SystemManufacturers.dll
+Windows.System.RemoteDesktop.dll
+Windows.UI.dll
+Windows.UI.Immersive.dll
+Windows.UI.Input.Inking.dll
+Windows.UI.Search.dll
+Windows.UI.Xaml.dll
+Windows.Web.dll
+Windows.Web.Http.dll
+WindowsAccessBridge-64.dll
+WindowsCodecs.dll
+WindowsCodecsExt.dll
+windowslivelogin.dll
+winethc.dll
+WinFax.dll
+winhttp.dll
+wininet.dll
+wininitext.dll
+winipsec.dll
+Winlangdb.dll
+winlogonext.dll
+winmde.dll
+winmm.dll
+winmmbase.dll
+WinMsoIrmProtector.dll
+winnsi.dll
+WinOpcIrmProtector.dll
+winrnr.dll
+winrscmd.dll
+winrsmgr.dll
+winrssrv.dll
+WinRtTracing.dll
+WinSATAPI.dll
+WinSCard.dll
+WinSetupUI.dll
+winshfhc.dll
+winsku.dll
+winsockhc.dll
+WINSRPC.DLL
+winsrv.dll
+winsta.dll
+WinSync.dll
+WinSyncMetastore.dll
+WinSyncProviders.dll
+wintrust.dll
+WinTypes.dll
+winusb.dll
+wisp.dll
+witnesswmiv2provider.dll
+wkscli.dll
+wkspbrokerAx.dll
+wksprtPS.dll
+wkssvc.dll
+wlanapi.dll
+wlancfg.dll
+WLanConn.dll
+wlandlg.dll
+wlangpui.dll
+WLanHC.dll
+wlanhlp.dll
+wlaninst.dll
+WlanMM.dll
+wlanmsm.dll
+wlanpref.dll
+WlanRadioManager.dll
+wlansec.dll
+wlansvc.dll
+wlansvcpal.dll
+wlanui.dll
+wlanutil.dll
+Wldap32.dll
+wldp.dll
+wlgpclnt.dll
+wlidcli.dll
+wlidcredprov.dll
+wlidfdp.dll
+wlidnsp.dll
+wlidprov.dll
+wlidres.dll
+wlidsvc.dll
+WlS0WndH.dll
+WMADMOD.DLL
+WMADMOE.DLL
+WMALFXGFXDSP.dll
+WMASF.DLL
+wmcodecdspps.dll
+wmdmlog.dll
+wmdmps.dll
+wmdrmdev.dll
+wmdrmnet.dll
+wmdrmsdk.dll
+wmerror.dll
+wmi.dll
+wmiclnt.dll
+wmicmiplugin.dll
+wmidcom.dll
+wmidx.dll
+wmiprop.dll
+wmitomi.dll
+WMNetMgr.dll
+wmp.dll
+WmpDui.dll
+wmpdxm.dll
+wmpeffects.dll
+WMPhoto.dll
+wmploc.DLL
+wmpmde.dll
+wmpps.dll
+wmpshell.dll
+wmsgapi.dll
+WMSPDMOD.DLL
+WMSPDMOE.DLL
+WMVCORE.DLL
+WMVDECOD.DLL
+wmvdspa.dll
+WMVENCOD.DLL
+WMVSDECD.DLL
+WMVSENCD.DLL
+WMVXENCD.DLL
+WofTasks.dll
+WofUtil.dll
+workerdd.dll
+WorkfoldersControl.dll
+WorkFoldersGPExt.dll
+WorkFoldersRes.dll
+WorkFoldersShell.dll
+workfolderssvc.dll
+wow64.dll
+wow64cpu.dll
+wow64win.dll
+Wpc.dll
+wpcap.dll
+wpccpl.dll
+wpcsvc.dll
+WpcWebSync.dll
+wpdbusenum.dll
+WpdMtp.dll
+WpdMtpUS.dll
+wpdshext.dll
+WPDShServiceObj.dll
+WPDSp.dll
+wpd_ci.dll
+wpnapps.dll
+wpncore.dll
+wpninprc.dll
+wpnprv.dll
+wpnsruprov.dll
+ws2help.dll
+ws2_32.dll
+wscapi.dll
+wscinterop.dll
+wscisvif.dll
+WSClient.dll
+wscproxystub.dll
+wscsvc.dll
+WSDApi.dll
+wsdchngr.dll
+WSDMon.dll
+WSDPrintProxy.DLL
+WSDScanProxy.dll
+wsecedit.dll
+wsepno.dll
+wshbth.dll
+wshcon.dll
+wshelper.dll
+wshext.dll
+wship6.dll
+wshirda.dll
+wshnetbs.dll
+wshqos.dll
+wshrm.dll
+WSHTCPIP.DLL
+WsmAgent.dll
+WSManMigrationPlugin.dll
+WsmAuto.dll
+wsmplpxy.dll
+WsmRes.dll
+Wsmselpl.dll
+Wsmselrr.dll
+WsmSvc.dll
+WsmWmiPl.dll
+wsnmp32.dll
+wsock32.dll
+WSService.dll
+WSShared.dll
+WSSync.dll
+wtsapi32.dll
+wu.upgrade.ps.dll
+wuaext.dll
+wuapi.dll
+wuaueng.dll
+wucltux.dll
+WUDFCoinstaller.dll
+WUDFPlatform.dll
+WUDFSvc.dll
+WUDFx.dll
+WUDFx02000.dll
+wudriver.dll
+wups.dll
+wups2.dll
+WUSettingsProvider.dll
+wushareduxresources.dll
+wuwebv.dll
+wvc.dll
+WwaApi.dll
+WWanAPI.dll
+wwancfg.dll
+wwanconn.dll
+WWanHC.dll
+wwaninst.dll
+wwanmm.dll
+Wwanpref.dll
+wwanprotdim.dll
+WwanRadioManager.dll
+wwansvc.dll
+wwapi.dll
+XAudio2_8.dll
+XInput1_4.dll
+XInput9_1_0.dll
+xmlfilter.dll
+xmllite.dll
+xmlprovi.dll
+xolehlp.dll
+XpsFilt.dll
+XpsGdiConverter.dll
+XpsPrint.dll
+XpsRasterService.dll
+xpsservices.dll
+XPSSHHDR.dll
+xpssvcs.dll
+xwizards.dll
+xwreg.dll
+xwtpdui.dll
+xwtpw32.dll
+YamahaAE.dll
+YamahaAE2.dll
+zipfldr.dll
+END
+PS C:\Windows\system32> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20190406160353
+**********************

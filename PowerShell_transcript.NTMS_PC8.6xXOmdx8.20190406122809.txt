@@ -1,0 +1,316 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20190406122809
+Username: NTMS_PC8\VMware
+RunAs User: NTMS_PC8\VMware
+Machine: NTMS_PC8 (Microsoft Windows NT 6.3.9600.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe
+Process ID: 6076
+PSVersion: 5.1.14409.1018
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14409.1018
+BuildVersion: 10.0.14409.1018
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\VMware\Documents\PowerShell_transcript.NTMS_PC8.6xXOmdx8.20190406122809.txt
+PS C:\Windows\system32> $myvar={write-host"my value"}
+PS C:\Windows\system32> $myvar
+write-host"my value"
+PS C:\Windows\system32> & $myvar
+write-hostmy value : The term 'write-hostmy value' is not recognized as the name of a cmdlet, function, script file, or 
+operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try 
+again.
+At line:1 char:9
++ $myvar={write-host"my value"}
++         ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (write-hostmy value:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+write-hostmy value : The term 'write-hostmy value' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling
+of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:9
++ $myvar={write-host"my value"}
++         ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (write-hostmy value:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> $myvar={write-host "my value"}
+PS C:\Windows\system32> & $myvar
+my value
+PS C:\Windows\system32> $myvar&= {write-host "my value"}
+At line:1 char:7
++ $myvar&= {write-host "my value"}
++       ~
+Unexpected token '&' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+
+PS C:\Windows\system32> $myvar=&{write-host "my value"}
+my value
+PS C:\Windows\system32> $myvar
+PS C:\Windows\system32> $myvar=&{Write-Output " my value"}
+PS C:\Windows\system32> $myvar
+ my value
+PS C:\Windows\system32> $myvar=&{write-host " my value"}
+ my value
+PS C:\Windows\system32> $myvar=&{Write-Output " my value"}
+PS C:\Windows\system32> $myvar
+ my value
+PS C:\Windows\system32> $allservices=get-service
+PS C:\Windows\system32> $allservices
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  AdobeARMservice    Adobe Acrobat Update Service
+Stopped  AdtAgent           Microsoft Monitoring Agent Audit Fo...
+Stopped  AeLookupSvc        Application Experience
+Stopped  ALG                Application Layer Gateway Service
+Running  AnyDesk            AnyDesk Service
+Stopped  AppIDSvc           Application Identity
+Running  Appinfo            Application Information
+Stopped  AppMgmt            Application Management
+Stopped  AppReadiness       App Readiness
+Stopped  AppXSvc            AppX Deployment Service (AppXSVC)
+Running  AudioEndpointBu... Windows Audio Endpoint Builder
+Running  Audiosrv           Windows Audio
+Stopped  AxInstSV           ActiveX Installer (AxInstSV)
+Running  AzureADConnectA... Microsoft Azure AD Connect Agent Up...
+Running  AzureADConnectA... Microsoft Azure AD Connect Authenti...
+Stopped  BDESVC             BitLocker Drive Encryption Service
+Running  BFE                Base Filtering Engine
+Running  BITS               Background Intelligent Transfer Ser...
+Running  BrokerInfrastru... Background Tasks Infrastructure Ser...
+Running  Browser            Computer Browser
+Stopped  BthHFSrv           Bluetooth Handsfree Service
+Stopped  bthserv            Bluetooth Support Service
+Stopped  CertPropSvc        Certificate Propagation
+Stopped  COMSysApp          COM+ System Application
+Stopped  cphs               Intel(R) Content Protection HECI Se...
+Running  CryptSvc           Cryptographic Services
+Stopped  CscService         Offline Files
+Running  DcomLaunch         DCOM Server Process Launcher
+Stopped  defragsvc          Optimise drives
+Running  DeviceAssociati... Device Association Service
+Stopped  DeviceInstall      Device Install Service
+Running  Dhcp               DHCP Client
+Running  DiagTrack          Diagnostics Tracking Service
+Running  Dnscache           DNS Client
+Stopped  dot3svc            Wired AutoConfig
+Running  DPS                Diagnostic Policy Service
+Stopped  DsmSvc             Device Setup Manager
+Stopped  Eaphost            Extensible Authentication Protocol
+Stopped  EFS                Encrypting File System (EFS)
+Running  EventLog           Windows Event Log
+Running  EventSystem        COM+ Event System
+Stopped  Fax                Fax
+Running  fdPHost            Function Discovery Provider Host
+Running  FDResPub           Function Discovery Resource Publica...
+Stopped  fhsvc              File History Service
+Running  FontCache          Windows Font Cache Service
+Stopped  GoogleChromeEle... Google Chrome Elevation Service
+Running  gpsvc              Group Policy Client
+Stopped  gupdate            Google Update Service (gupdate)
+Stopped  gupdatem           Google Update Service (gupdatem)
+Stopped  gusvc              Google Software Updater
+Running  HealthService      Microsoft Monitoring Agent
+Running  hidserv            Human Interface Device Service
+Stopped  hkmsvc             Health Key and Certificate Management
+Running  HomeGroupListener  HomeGroup Listener
+Running  HomeGroupProvider  HomeGroup Provider
+Running  IAStorDataMgrSvc   Intel(R) Rapid Storage Technology
+Stopped  IEEtwCollectorS... Internet Explorer ETW Collector Ser...
+Running  igfxCUIService2... Intel(R) HD Graphics Control Panel ...
+Running  IKEEXT             IKE and AuthIP IPsec Keying Modules
+Running  Intel(R) PROSet... Intel(R) PROSet Monitoring Service
+Running  iphlpsvc           IP Helper
+Stopped  Jenkins            Jenkins
+Running  KeyIso             CNG Key Isolation
+Stopped  KtmRm              KtmRm for Distributed Transaction C...
+Running  LanmanServer       Server
+Running  LanmanWorkstation  Workstation
+Stopped  lfsvc              Windows Location Framework Service
+Stopped  lltdsvc            Link-Layer Topology Discovery Mapper
+Running  lmhosts            TCP/IP NetBIOS Helper
+Running  LSM                Local Session Manager
+Stopped  Microsoft Offic... Microsoft Office Groove Audit Service
+Running  MicrosoftDepend... Microsoft Dependency Agent
+Stopped  MMCSS              Multimedia Class Scheduler
+Running  MpsSvc             Windows Firewall
+Stopped  MSDTC              Distributed Transaction Coordinator
+Stopped  MSiSCSI            Microsoft iSCSI Initiator Service
+Stopped  msiserver          Windows Installer
+Stopped  MsKeyboardFilter   Microsoft Keyboard Filter
+Running  msoidsvc           Microsoft Online Services Sign-in A...
+Running  MVMCP2VAgent       Microsoft Virtual Machine Converter...
+Stopped  napagent           Network Access Protection Agent
+Stopped  NcaSvc             Network Connectivity Assistant
+Running  NcbService         Network Connection Broker
+Running  NcdAutoSetup       Network Connected Devices Auto-Setup
+Stopped  Netlogon           Netlogon
+Stopped  Netman             Network Connections
+Running  netprofm           Network List Service
+Stopped  NetTcpPortSharing  NetTcpPortSharing
+Running  NlaSvc             Network Location Awareness
+Running  nsi                Network Store Interface Service
+Stopped  odserv             Microsoft Office Diagnostics Service
+Stopped  ose                Office Source Engine
+Running  p2pimsvc           Peer Networking Identity Manager
+Running  p2psvc             Peer Networking Grouping
+Running  PassThru Service   Internet Pass-Through Service
+Running  PcaSvc             Program Compatibility Assistant Ser...
+Stopped  PeerDistSvc        BranchCache
+Stopped  PerfHost           Performance Counter DLL Host
+Stopped  pla                Performance Logs & Alerts
+Running  PlugPlay           Plug and Play
+Stopped  PNRPAutoReg        PNRP Machine Name Publication Service
+Running  PNRPsvc            Peer Name Resolution Protocol
+Running  PolicyAgent        IPsec Policy Agent
+Running  Power              Power
+Stopped  PrintNotify        Printer Extensions and Notifications
+Running  ProfSvc            User Profile Service
+Stopped  QWAVE              Quality Windows Audio Video Experience
+Stopped  RasAuto            Remote Access Auto Connection Manager
+Stopped  RasMan             Remote Access Connection Manager
+Stopped  RemoteAccess       Routing and Remote Access
+Stopped  RemoteRegistry     Remote Registry
+Stopped  rpcapd             Remote Packet Capture Protocol v.0 ...
+Running  RpcEptMapper       RPC Endpoint Mapper
+Stopped  RpcLocator         Remote Procedure Call (RPC) Locator
+Running  RpcSs              Remote Procedure Call (RPC)
+Running  SamSs              Security Accounts Manager
+Stopped  SCardSvr           Smart Card
+Stopped  ScDeviceEnum       Smart Card Device Enumeration Service
+Running  Schedule           Task Scheduler
+Stopped  SCPolicySvc        Smart Card Removal Policy
+Running  seclogon           Secondary Log-on
+Running  SENS               System Event Notification Service
+Running  SensrSvc           Sensor Monitoring Service
+Stopped  SessionEnv         Remote Desktop Configuration
+Stopped  SharedAccess       Internet Connection Sharing (ICS)
+Running  ShellHWDetection   Shell Hardware Detection
+Stopped  smphost            Microsoft Storage Spaces SMP
+Stopped  SNMPTRAP           SNMP Trap
+Running  Spooler            Print Spooler
+Stopped  sppsvc             Software Protection
+Running  SQLWriter          SQL Server VSS Writer
+Running  SSDPSRV            SSDP Discovery
+Stopped  SstpSvc            Secure Socket Tunneling Protocol Se...
+Running  stisvc             Windows Image Acquisition (WIA)
+Stopped  StorSvc            Storage Service
+Stopped  svsvc              Spot Verifier
+Stopped  swprv              Microsoft Software Shadow Copy Prov...
+Running  SysMain            Superfetch
+Running  SystemEventsBroker System Events Broker
+Stopped  TabletInputService Touch Keyboard and Handwriting Pane...
+Stopped  TapiSrv            Telephony
+Running  TeamViewer         TeamViewer 13
+Stopped  TermService        Remote Desktop Services
+Running  Themes             Themes
+Stopped  THREADORDER        Thread Ordering Server
+Running  TimeBroker         Time Broker
+Running  TlntSvr            Telnet
+Running  TrkWks             Distributed Link Tracking Client
+Stopped  TrustedInstaller   Windows Modules Installer
+Stopped  UI0Detect          Interactive Services Detection
+Stopped  UmRdpService       Remote Desktop Services UserMode Po...
+Running  upnphost           UPnP Device Host
+Stopped  uSHAREitSvc        SHAREit Hotspot Service
+Stopped  VaultSvc           Credential Manager
+Stopped  vds                Virtual Disk
+Running  VMAuthdService     VMware Authorization Service
+Stopped  vmicguestinterface Hyper-V Guest Service Interface
+Stopped  vmicheartbeat      Hyper-V Heartbeat Service
+Stopped  vmickvpexchange    Hyper-V Data Exchange Service
+Stopped  vmicrdv            Hyper-V Remote Desktop Virtualizati...
+Stopped  vmicshutdown       Hyper-V Guest Shutdown Service
+Stopped  vmictimesync       Hyper-V Time Synchronization Service
+Stopped  vmicvss            Hyper-V Volume Shadow Copy Requestor
+Stopped  VMnetDHCP          VMware DHCP Service
+Running  VMUSBArbService    VMware USB Arbitration Service
+Running  VMware NAT Service VMware NAT Service
+Running  VMwareHostd        VMware Workstation Server
+Stopped  VSS                Volume Shadow Copy
+Stopped  W32Time            Windows Time
+Stopped  wbengine           Block Level Backup Engine Service
+Stopped  WbioSrvc           Windows Biometric Service
+Running  Wcmsvc             Windows Connection Manager
+Stopped  wcncsvc            Windows Connect Now - Config Registrar
+Stopped  WcsPlugInService   Windows Colour System
+Running  WdiServiceHost     Diagnostic Service Host
+Stopped  WdiSystemHost      Diagnostic System Host
+Stopped  WdNisSvc           Windows Defender Network Inspection...
+Stopped  WebClient          WebClient
+Stopped  Wecsvc             Windows Event Collector
+Stopped  WEPHOSTSVC         Windows Encryption Provider Host Se...
+Stopped  wercplsupport      Problem Reports and Solutions Contr...
+Stopped  WerSvc             Windows Error Reporting Service
+Stopped  WiaRpc             Still Image Acquisition Events
+Stopped  WinDefend          Windows Defender Service
+Running  WinHttpAutoProx... WinHTTP Web Proxy Auto-Discovery Se...
+Running  Winmgmt            Windows Management Instrumentation
+Running  WinRM              Windows Remote Management (WS-Manag...
+Stopped  WlanSvc            WLAN AutoConfig
+Stopped  wlidsvc            Microsoft Account Sign-in Assistant
+Stopped  wmiApSrv           WMI Performance Adapter
+Running  WMPNetworkSvc      Windows Media Player Network Sharin...
+Stopped  workfolderssvc     Work Folders
+Stopped  WPCSvc             Family Safety
+Stopped  WPDBusEnum         Portable Device Enumerator Service
+Running  wscsvc             Security Center
+Running  WSearch            Windows Search
+Stopped  WSService          Windows Store Service (WSService)
+Stopped  wuauserv           Windows Update
+Running  wudfsvc            Windows Driver Foundation - User-mo...
+Stopped  WwanSvc            WWAN AutoConfig
+
+
+PS C:\Windows\system32> $allservices | select@{$_.Name="BITS"}
+select@ : The term 'select@' is not recognized as the name of a cmdlet, function, script file, or operable program. 
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:16
++ $allservices | select@{$_.Name="BITS"}
++                ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (select@:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+select@ : The term 'select@' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a
+path was included, verify that the path is correct and try again.
+At line:1 char:16
++ $allservices | select@{$_.Name="BITS"}
++                ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (select@:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> $output=$allservices | Where-Object{$_.Name -eq "BITS"}
+PS C:\Windows\system32> $output=$allservices | Where-Object{$_.Name -eq "BITS"}
+PS C:\Windows\system32> Write-Host { " The BITS service status is $output.status "}
+ " The BITS service status is $output.status "
+PS C:\Windows\system32> Write-Host { " The BITS service status is $($output.status) "}
+ " The BITS service status is $($output.status) "
+PS C:\Windows\system32> Write-Host { "The BITS service status is $output.status"}
+ "The BITS service status is $output.status"
+PS C:\Windows\system32> Write-Host { "The BITS service status is $($($output.status))"}
+ "The BITS service status is $($($output.status))"
+PS C:\Windows\system32> Write-Host { "The BITS service status is $output.status"}
+ "The BITS service status is $output.status"
+PS C:\Windows\system32> Write-Host { "The BITS service status is $($output.status)"}
+ "The BITS service status is $($output.status)"
+PS C:\Windows\system32> Write-Host { "The BITS service status is $($output.Status)"}
+ "The BITS service status is $($output.Status)"
+PS C:\Windows\system32> $output
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  BITS               Background Intelligent Transfer Ser...
+
+
+PS C:\Windows\system32> Write-Host { "The BITS service status is $($output.Status)"}
+ "The BITS service status is $($output.Status)"
+PS C:\Windows\system32> Write-Host  "The BITS service status is $($output.Status)"
+The BITS service status is Running
+PS C:\Windows\system32> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20190406131052
+**********************
