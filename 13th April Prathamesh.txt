@@ -1,0 +1,87 @@
+function getdisksize {
+param ($comp,$freespace,$drivetype)
+begin{Write-Host "Start of script"}
+process{
+$all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $drivetype=3 | where {($($freespace)/$_.size) -lt.1} | select -Property deviceid,freespace,size
+$all | export-csv -Path "C:\Prathamesh\abc.txt" 
+}
+
+end {}
+}
+
+getdisksize
+
+Start-Transcript
+
+function getdriverdetails
+{
+param (
+[validateset(1,3,5)]
+[int]$drivetype=3,
+[string]$compname='localhost'
+)
+write-host "This is the start of my function"
+
+$alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -Filter "drivetype=$drivetype" | where {($_.freespace/$_.size) -lt.1} | select -Property deviceid,freespace,size
+
+Write-Host " I have collected all the drive details"
+$myoutput=[System.Collections.ArrayList]@()
+Write-Host "Starting foreach loop"
+
+foreach ($drive in $alldrives)
+{
+$mysingledrive=[PSCustomobject]@{
+server=$compname
+Drivername=$drive.DeviceID
+FreeSpace=$drive.Freespace
+DriveSize=$drivetype.Size
+
+}
+Write-Host " Value of `$mysingledrive is $mysingledrive"
+
+$myoutput.Add($mysingledrive) | Out-Null
+}
+Write-Host " Done with for each loop"
+Write-Output $myoutput
+}
+
+$csvinputs= import-csv -Path C:\Prathamesh\serverlist.csv
+Foreach($server in $csvinputs)
+{
+getdriverdetails -compname $server.srvname -drivetype 3 | Export-Csv C:\Prathamesh\serverdrivelist.csv -Append -NoTypeInformation
+}
+
+Get-Help about_functions_advanced_parameters -ShowWindow
+
+Get-Item -Path C:\Windows | Get-Member
+
+function getalldllfiles
+{
+[validatescript({$_.psiscontainer})]
+param($path)
+
+Get-ChildItem -Path $path | ? {$_.extension -eq ".dll" }
+
+}
+
+
+
+$Error[0].CategoryInfo
+$Error[1].Exception
+
+Get-Service -ErrorAction
+
+try {
+
+Test-Connection ntms.cvx -ErrorAction Stop
+#get-prathamesh
+
+}
+
+catch
+
+{
+$_.exception
+}
+
+Stop-Transcript

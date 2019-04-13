@@ -1,0 +1,1295 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20190413113417
+Username: NTMS_PC8\Administrator
+RunAs User: NTMS_PC8\Administrator
+Machine: NTMS_PC8 (Microsoft Windows NT 6.3.9600.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell_ise.exe
+Process ID: 2804
+PSVersion: 5.1.14409.1018
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14409.1018
+BuildVersion: 10.0.14409.1018
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\Administrator\Documents\PowerShell_transcript.NTMS_PC8.2bhYurxu.20190413113417.txt
+PS C:\Windows\system32> function getdriverdetails
+{
+param (
+[validateset(1,3,5)]
+[int]$drivetype=3,
+[string]$compname='localhost'
+)
+write-host "This is the start of my function"
+
+$alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -Filter "drivetype=$drivetype" | where {($_.freespace/$_.size) -lt.1} | select -Property deviceid,freespace,size
+
+Write-Host " I have collected all the drive details"
+$myoutput=[System.Collections.ArrayList]@()
+Write-Host "Starting foreach loop"
+
+foreach ($drive in $alldrives)
+{
+$mysingledrive=[PSCustomobject]@{
+server=$compname
+Drivername=$drive.DeviceID
+FreeSpace=$drive.Freespace
+DriveSize=$drivetype.Size
+
+}
+Write-Host " Value of `$mysingledrive is $mysingledrive"
+
+$myoutput.Add($mysingledrive) | Out-Null
+}
+Write-Host " Done with for each loop"
+Write-Output $myoutput
+}
+PS C:\Windows\system32> $csvinputs= import-csv -Path C:\Prathamesh\serverlist.csv
+Foreach($server in $csvinputs)
+{
+get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv C:\Prathamesh\serverdrivelist.csv -Append
+}
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or 
+operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try 
+again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or 
+operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try 
+again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> function getdriverdetails
+{
+param (
+[validateset(1,3,5)]
+[int]$drivetype=3,
+[string]$compname='localhost'
+)
+write-host "This is the start of my function"
+
+$alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -Filter "drivetype=$drivetype" | where {($_.freespace/$_.size) -lt.1} | select -Property deviceid,freespace,size
+
+Write-Host " I have collected all the drive details"
+$myoutput=[System.Collections.ArrayList]@()
+Write-Host "Starting foreach loop"
+
+foreach ($drive in $alldrives)
+{
+$mysingledrive=[PSCustomobject]@{
+server=$compname
+Drivername=$drive.DeviceID
+FreeSpace=$drive.Freespace
+DriveSize=$drivetype.Size
+
+}
+Write-Host " Value of `$mysingledrive is $mysingledrive"
+
+$myoutput.Add($mysingledrive) | Out-Null
+}
+Write-Host " Done with for each loop"
+Write-Output $myoutput
+}
+PS C:\Windows\system32> $csvinputs= import-csv -Path C:\Prathamesh\serverlist.csv
+Foreach($server in $csvinputs)
+{
+getdriverdetails -compname $server.srvname -drivetype 3 | Export-Csv C:\Prathamesh\serverdrivelist.csv -Append
+}
+This is the start of my function
+ I have collected all the drive details
+Starting foreach loop
+ Value of $mysingledrive is @{server=NTMS_PC8; Drivername=D:; FreeSpace=125016449024; DriveSize=}
+ Done with for each loop
+This is the start of my function
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+ I have collected all the drive details
+Starting foreach loop
+ Done with for each loop
+PS C:\Windows\system32> $csvinputs= import-csv -Path C:\Prathamesh\serverlist.csv
+Foreach($server in $csvinputs)
+{
+getdriverdetails -compname $server.srvname -drivetype 3 | Export-Csv C:\Prathamesh\serverdrivelist.csv -Append
+}
+This is the start of my function
+ I have collected all the drive details
+Starting foreach loop
+ Value of $mysingledrive is @{server=NTMS_PC8; Drivername=D:; FreeSpace=125016449024; DriveSize=}
+ Done with for each loop
+This is the start of my function
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+ I have collected all the drive details
+Starting foreach loop
+ Done with for each loop
+PS C:\Windows\system32> function getdriverdetails
+{
+param (
+[validateset(1,3,5)]
+[int]$drivetype=3,
+[string]$compname='localhost'
+)
+write-host "This is the start of my function"
+
+$alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -Filter "drivetype=$drivetype" | where {($_.freespace/$_.size) -lt.1} | select -Property deviceid,freespace,size
+
+Write-Host " I have collected all the drive details"
+$myoutput=[System.Collections.ArrayList]@()
+Write-Host "Starting foreach loop"
+
+foreach ($drive in $alldrives)
+{
+$mysingledrive=[PSCustomobject]@{
+server=$compname
+Drivername=$drive.DeviceID
+FreeSpace=$drive.Freespace
+DriveSize=$drivetype.Size
+
+}
+Write-Host " Value of `$mysingledrive is $mysingledrive"
+
+$myoutput.Add($mysingledrive) | Out-Null
+}
+Write-Host " Done with for each loop"
+Write-Output $myoutput
+}
+PS C:\Windows\system32> $csvinputs= import-csv -Path C:\Prathamesh\serverlist.csv
+Foreach($server in $csvinputs)
+{
+getdriverdetails -compname $server.srvname -drivetype 3 | Export-Csv C:\Prathamesh\serverdrivelist.csv -Append -NoTypeInformation
+}
+This is the start of my function
+ I have collected all the drive details
+Starting foreach loop
+ Value of $mysingledrive is @{server=NTMS_PC8; Drivername=D:; FreeSpace=125016449024; DriveSize=}
+ Done with for each loop
+This is the start of my function
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+ I have collected all the drive details
+Starting foreach loop
+ Done with for each loop
+PS C:\Windows\system32> 
+function getdriverdetails
+{
+param (
+[validateset(1,3,5)]
+[int]$drivetype=3,
+[string]$compname='localhost'
+)
+write-host "This is the start of my function"
+
+$alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -Filter "drivetype=$drivetype" | where {($_.freespace/$_.size) -lt.1} | select -Property deviceid,freespace,size
+
+Write-Host " I have collected all the drive details"
+$myoutput=[System.Collections.ArrayList]@()
+Write-Host "Starting foreach loop"
+
+foreach ($drive in $alldrives)
+{
+$mysingledrive=[PSCustomobject]@{
+server=$compname
+Drivername=$drive.DeviceID
+FreeSpace=$drive.Freespace
+DriveSize=$drivetype.Size
+
+}
+Write-Host " Value of `$mysingledrive is $mysingledrive"
+
+$myoutput.Add($mysingledrive) | Out-Null
+}
+Write-Host " Done with for each loop"
+Write-Output $myoutput
+}
+PS C:\Windows\system32> $csvinputs= import-csv -Path C:\Prathamesh\serverlist.csv
+Foreach($server in $csvinputs)
+{
+getdriverdetails -compname $server.srvname -drivetype 3 | Export-Csv C:\Prathamesh\serverdrivelist.csv -Append -NoTypeInformation
+}
+This is the start of my function
+ I have collected all the drive details
+Starting foreach loop
+ Value of $mysingledrive is @{server=NTMS_PC8; Drivername=D:; FreeSpace=125016449024; DriveSize=}
+ Done with for each loop
+This is the start of my function
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:11 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:11 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+ I have collected all the drive details
+Starting foreach loop
+ Done with for each loop
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -Online
+>> TerminatingError(Get-Help): "The online version of this Help topic cannot be displayed because the Internet address (URI) of the Help topic is not specified in the command code or in the help file for the command."
+Get-Help : The online version of this Help topic cannot be displayed because the Internet address (URI) of the Help 
+topic is not specified in the command code or in the help file for the command.
+At line:1 char:1
++ Get-Help about_functions_advanced_parameters -Online
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-Help], PSInvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperation,Microsoft.PowerShell.Commands.GetHelpCommand
+Get-Help : The online version of this Help topic cannot be displayed because the Internet address (URI) of the Help topic is not specified in the command code or in the help file for the command.
+At line:1 char:1
++ Get-Help about_functions_advanced_parameters -Online
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-Help], PSInvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperation,Microsoft.PowerShell.Commands.GetHelpCommand
+
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Item | fl*
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> Get-Item | fl*
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> Get-Item|fl *
+>> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+PS C:\Windows\system32> Get-Item|fl*
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:10
++ Get-Item|fl*
++          ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:10
++ Get-Item|fl*
++          ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> Get-Item -Path C:\Windows | fl*
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the 
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:29
++ Get-Item -Path C:\Windows | fl*
++                             ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:29
++ Get-Item -Path C:\Windows | fl*
++                             ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> Get-Item -Path C:\Windows | fl *
+
+
+PSPath            : Microsoft.PowerShell.Core\FileSystem::C:\Windows
+PSParentPath      : Microsoft.PowerShell.Core\FileSystem::C:\
+PSChildName       : Windows
+PSDrive           : C
+PSProvider        : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer     : True
+Mode              : d-----
+BaseName          : Windows
+Target            : {}
+LinkType          :
+Name              : Windows
+FullName          : C:\Windows
+Parent            :
+Exists            : True
+Root              : C:\
+Extension         :
+CreationTime      : 22-08-2013 07:06:15 PM
+CreationTimeUtc   : 22-08-2013 01:36:15 PM
+LastAccessTime    : 23-03-2019 04:25:33 PM
+LastAccessTimeUtc : 23-03-2019 10:55:33 AM
+LastWriteTime     : 23-03-2019 04:25:33 PM
+LastWriteTimeUtc  : 23-03-2019 10:55:33 AM
+Attributes        : Directory
+
+
+
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> Get-Item -Path C:\Windows | Get-Member
+
+
+   TypeName: System.IO.DirectoryInfo
+
+Name                      MemberType     Definition
+----                      ----------     ----------
+LinkType                  CodeProperty   System.String LinkType{get=GetLinkType;}
+Mode                      CodeProperty   System.String Mode{get=Mode;}
+Target                    CodeProperty   System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] Target{get=GetTarget;}
+Create                    Method         void Create(), void Create(System.Security.AccessControl.DirectorySecurity directorySecurity)
+CreateObjRef              Method         System.Runtime.Remoting.ObjRef CreateObjRef(type requestedType)
+CreateSubdirectory        Method         System.IO.DirectoryInfo CreateSubdirectory(string path), System.IO.DirectoryInfo CreateSubdirectory(string path, System.Security.AccessControl.DirectorySecurity director...
+Delete                    Method         void Delete(), void Delete(bool recursive)
+EnumerateDirectories      Method         System.Collections.Generic.IEnumerable[System.IO.DirectoryInfo] EnumerateDirectories(), System.Collections.Generic.IEnumerable[System.IO.DirectoryInfo] EnumerateDirector...
+EnumerateFiles            Method         System.Collections.Generic.IEnumerable[System.IO.FileInfo] EnumerateFiles(), System.Collections.Generic.IEnumerable[System.IO.FileInfo] EnumerateFiles(string searchPatte...
+EnumerateFileSystemInfos  Method         System.Collections.Generic.IEnumerable[System.IO.FileSystemInfo] EnumerateFileSystemInfos(), System.Collections.Generic.IEnumerable[System.IO.FileSystemInfo] EnumerateFi...
+Equals                    Method         bool Equals(System.Object obj)
+GetAccessControl          Method         System.Security.AccessControl.DirectorySecurity GetAccessControl(), System.Security.AccessControl.DirectorySecurity GetAccessControl(System.Security.AccessControl.Access...
+GetDirectories            Method         System.IO.DirectoryInfo[] GetDirectories(), System.IO.DirectoryInfo[] GetDirectories(string searchPattern), System.IO.DirectoryInfo[] GetDirectories(string searchPattern...
+GetFiles                  Method         System.IO.FileInfo[] GetFiles(string searchPattern), System.IO.FileInfo[] GetFiles(string searchPattern, System.IO.SearchOption searchOption), System.IO.FileInfo[] GetFi...
+GetFileSystemInfos        Method         System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern), System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern, System.IO.SearchOption searchOpt...
+GetHashCode               Method         int GetHashCode()
+GetLifetimeService        Method         System.Object GetLifetimeService()
+GetObjectData             Method         void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context), void ISerializable.GetObjectData(System.R...
+GetType                   Method         type GetType()
+InitializeLifetimeService Method         System.Object InitializeLifetimeService()
+MoveTo                    Method         void MoveTo(string destDirName)
+Refresh                   Method         void Refresh()
+SetAccessControl          Method         void SetAccessControl(System.Security.AccessControl.DirectorySecurity directorySecurity)
+ToString                  Method         string ToString()
+PSChildName               NoteProperty   string PSChildName=Windows
+PSDrive                   NoteProperty   PSDriveInfo PSDrive=C
+PSIsContainer             NoteProperty   bool PSIsContainer=True
+PSParentPath              NoteProperty   string PSParentPath=Microsoft.PowerShell.Core\FileSystem::C:\
+PSPath                    NoteProperty   string PSPath=Microsoft.PowerShell.Core\FileSystem::C:\Windows
+PSProvider                NoteProperty   ProviderInfo PSProvider=Microsoft.PowerShell.Core\FileSystem
+Attributes                Property       System.IO.FileAttributes Attributes {get;set;}
+CreationTime              Property       datetime CreationTime {get;set;}
+CreationTimeUtc           Property       datetime CreationTimeUtc {get;set;}
+Exists                    Property       bool Exists {get;}
+Extension                 Property       string Extension {get;}
+FullName                  Property       string FullName {get;}
+LastAccessTime            Property       datetime LastAccessTime {get;set;}
+LastAccessTimeUtc         Property       datetime LastAccessTimeUtc {get;set;}
+LastWriteTime             Property       datetime LastWriteTime {get;set;}
+LastWriteTimeUtc          Property       datetime LastWriteTimeUtc {get;set;}
+Name                      Property       string Name {get;}
+Parent                    Property       System.IO.DirectoryInfo Parent {get;}
+Root                      Property       System.IO.DirectoryInfo Root {get;}
+BaseName                  ScriptProperty System.Object BaseName {get=$this.Name;}
+
+
+PS C:\Windows\system32> Get-Help about_functions_advanced_parameters -ShowWindow
+PS C:\Windows\system32> $Error
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+At line:45 char:16
++ ...      return [System.Management.Automation.CommandCompletion]::Complet ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : NullReferenceException
+
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+At line:45 char:16
++ ...      return [System.Management.Automation.CommandCompletion]::Complet ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : NullReferenceException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:29
++ Get-Item -Path C:\Windows | fl*
++                             ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:10
++ Get-Item|fl*
++          ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+At line:45 char:16
++ ...      return [System.Management.Automation.CommandCompletion]::Complet ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : NullReferenceException
+
+Get-Help : The online version of this Help topic cannot be displayed because the Internet address (URI) of the Help topic is not specified in the command code or in the help file for the command.
+At line:1 char:1
++ Get-Help about_functions_advanced_parameters -Online
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-Help], PSInvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperation,Microsoft.PowerShell.Commands.GetHelpCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:11 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+start : This command cannot be run due to the error: The system cannot find the file specified.
+At line:1 char:1
++ start transcript
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:6 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt"
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:5 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:6 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt"
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:5 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:4 char:1
++ param($comp,$freespace,$drivetype)
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:5 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt" }
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:4 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:3 char:10
++ process {param($comp,$freespace,$drivetype)
++          ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:5 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt" }
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:4 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:3 char:10
++ process {param($comp,$freespace,$drivetype)
++          ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:5 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt" }
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:4 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:3 char:10
++ process {param($comp,$freespace,$drivetype)
++          ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> $Error
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+At line:45 char:16
++ ...      return [System.Management.Automation.CommandCompletion]::Complet ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : NullReferenceException
+
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+At line:45 char:16
++ ...      return [System.Management.Automation.CommandCompletion]::Complet ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : NullReferenceException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:29
++ Get-Item -Path C:\Windows | fl*
++                             ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:10
++ Get-Item|fl*
++          ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+fl* : The term 'fl*' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:12
++ Get-Item | fl*
++            ~~~
+    + CategoryInfo          : ObjectNotFound: (fl*:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+At line:45 char:16
++ ...      return [System.Management.Automation.CommandCompletion]::Complet ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : NullReferenceException
+
+Get-Help : The online version of this Help topic cannot be displayed because the Internet address (URI) of the Help topic is not specified in the command code or in the help file for the command.
+At line:1 char:1
++ Get-Help about_functions_advanced_parameters -Online
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-Help], PSInvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperation,Microsoft.PowerShell.Commands.GetHelpCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:11 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Get-WmiObject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:10 char:12
++ $alldrives=Get-WmiObject win32_logicaldisk -ComputerName $compname -F ...
++            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+get-driverdetails : The term 'get-driverdetails' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:4 char:1
++ get-driverdetails -compname $server.srvname -drivetype 3 | Export-Csv ...
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-driverdetails:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+start : This command cannot be run due to the error: The system cannot find the file specified.
+At line:1 char:1
++ start transcript
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:6 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt"
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:5 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:6 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt"
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:5 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:4 char:1
++ param($comp,$freespace,$drivetype)
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:5 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt" }
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:4 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:3 char:10
++ process {param($comp,$freespace,$drivetype)
++          ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:5 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt" }
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:4 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:3 char:10
++ process {param($comp,$freespace,$drivetype)
++          ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+Export-Csv : Cannot bind argument to parameter 'InputObject' because it is null.
+At line:5 char:8
++ $all | export-csv -Path "C:\Prathamesh\abc.txt" }
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Export-Csv], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorNullNotAllowed,Microsoft.PowerShell.Commands.ExportCsvCommand
+
+Get-WmiObject : Cannot validate argument on parameter 'ComputerName'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.
+At line:4 char:53
++ $all= Get-WmiObject win32_logicaldisk -ComputerName $comp -Filter $dr ...
++                                                     ~~~~~
+    + CategoryInfo          : InvalidData: (:) [Get-WmiObject], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationError,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+
+param : The term 'param' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:3 char:10
++ process {param($comp,$freespace,$drivetype)
++          ~~~~~
+    + CategoryInfo          : ObjectNotFound: (param:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Windows\system32> $error(0)
+At line:1 char:7
++ $error(0)
++       ~
+Unexpected token '(' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
+
+PS C:\Windows\system32> $Error[0]
+At line:1 char:7
++ $error(0)
++       ~
+Unexpected token '(' in expression or statement.
+PS C:\Windows\system32> $Error[0].InnerException
+PS C:\Windows\system32> $Error[0].categoryinfo
+PS C:\Windows\system32> $Error[0].categoryinfo
+PS C:\Windows\system32> $Error.categoryinfo
+
+
+Category   : NotSpecified
+Activity   :
+Reason     : MethodInvocationException
+TargetName :
+TargetType :
+
+Category   : NotSpecified
+Activity   :
+Reason     : MethodInvocationException
+TargetName :
+TargetType :
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : fl*
+TargetType : String
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : fl*
+TargetType : String
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : fl*
+TargetType : String
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : fl*
+TargetType : String
+
+Category   : NotSpecified
+Activity   :
+Reason     : MethodInvocationException
+TargetName :
+TargetType :
+
+Category   : InvalidOperation
+Activity   : Get-Help
+Reason     : PSInvalidOperationException
+TargetName :
+TargetType :
+
+Category   : InvalidOperation
+Activity   : Get-WmiObject
+Reason     : COMException
+TargetName :
+TargetType :
+
+Category   : InvalidOperation
+Activity   : Get-WmiObject
+Reason     : COMException
+TargetName :
+TargetType :
+
+Category   : InvalidOperation
+Activity   : Get-WmiObject
+Reason     : COMException
+TargetName :
+TargetType :
+
+Category   : InvalidOperation
+Activity   : Get-WmiObject
+Reason     : COMException
+TargetName :
+TargetType :
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : get-driverdetails
+TargetType : String
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : get-driverdetails
+TargetType : String
+
+Category   : InvalidOperation
+Activity   : Start-Process
+Reason     : InvalidOperationException
+TargetName :
+TargetType :
+
+Category   : InvalidData
+Activity   : Export-Csv
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : InvalidData
+Activity   : Get-WmiObject
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : InvalidData
+Activity   : Export-Csv
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : InvalidData
+Activity   : Get-WmiObject
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : param
+TargetType : String
+
+Category   : InvalidData
+Activity   : Export-Csv
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : InvalidData
+Activity   : Get-WmiObject
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : param
+TargetType : String
+
+Category   : InvalidData
+Activity   : Export-Csv
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : InvalidData
+Activity   : Get-WmiObject
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : param
+TargetType : String
+
+Category   : InvalidData
+Activity   : Export-Csv
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : InvalidData
+Activity   : Get-WmiObject
+Reason     : ParameterBindingValidationException
+TargetName :
+TargetType :
+
+Category   : ObjectNotFound
+Activity   :
+Reason     : CommandNotFoundException
+TargetName : param
+TargetType : String
+
+
+
+PS C:\Windows\system32> $Error[0].CategoryInfo
+PS C:\Windows\system32> $Error[0]
+At line:1 char:7
++ $error(0)
++       ~
+Unexpected token '(' in expression or statement.
+PS C:\Windows\system32> $Error[1]
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+At line:45 char:16
++ ...      return [System.Management.Automation.CommandCompletion]::Complet ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : NullReferenceException
+
+PS C:\Windows\system32> $Error[1].CategoryInfo
+
+
+Category   : NotSpecified
+Activity   :
+Reason     : MethodInvocationException
+TargetName :
+TargetType :
+
+
+
+PS C:\Windows\system32> $Error[1].Exception
+Exception calling "CompleteInput" with "4" argument(s): "Object reference not set to an instance of an object."
+PS C:\Windows\system32> try {
+
+Test-Connection ntms.cvx
+}
+
+catch
+
+{
+write-host "Error"
+}
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+PS C:\Windows\system32> try {
+
+Test-Connection ntms.cvx
+}
+
+catch
+
+{
+
+}
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+Test-Connection : Testing connection to computer 'ntms.cvx' failed: No such host is known
+At line:3 char:1
++ Test-Connection ntms.cvx
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (ntms.cvx:String) [Test-Connection], PingException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+PS C:\Windows\system32> try {
+
+#Test-Connection ntms.cvx
+get-prathamesh
+}
+
+catch
+
+{
+write-host "Error"
+}
+Error
+PS C:\Windows\system32> try {
+
+Test-Connection ntms.cvx -ErrorAction Stop
+
+}
+
+catch
+
+{
+write-host "Error"
+}
+>> TerminatingError(Test-Connection): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Testing connection to computer 'ntms.cvx' failed: No such host is known"
+Error
+PS C:\Windows\system32> try {
+
+#Test-Connection ntms.cvx -ErrorAction Stop
+get-prathamesh
+
+}
+
+catch
+
+{
+$_.exception.message
+}
+The term 'get-prathamesh' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS C:\Windows\system32> try {
+
+#Test-Connection ntms.cvx -ErrorAction Stop
+get-prathamesh
+
+}
+
+catch
+
+{
+$_.exception
+}
+The term 'get-prathamesh' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try
+again.
+PS C:\Windows\system32> try {
+
+Test-Connection ntms.cvx -ErrorAction Stop
+#get-prathamesh
+
+}
+
+catch
+
+{
+$_.exception
+}
+>> TerminatingError(Test-Connection): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Testing connection to computer 'ntms.cvx' failed: No such host is known"
+Testing connection to computer 'ntms.cvx' failed: No such host is known
+PS C:\Windows\system32> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20190413160335
+**********************
