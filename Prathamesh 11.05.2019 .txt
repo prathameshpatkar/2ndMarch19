@@ -1,0 +1,115 @@
+﻿Get-Counter | Get-Member
+$var= Get-Counter
+Get-Member -InputObject $var.CounterSamples
+$var.CounterSamples |Get-Member
+Get-Counter -ListSet *
+
+foreach($counter in $var.CounterSamples)
+{
+$myvalue=$counter.Path
+$myarray=$myvalue.Split("\")
+$myhashtable=[PSCustomObject]@{Timestamp=$counter.Timestamp;
+compname=$myarray[2]
+counterset=$myarray[3]
+counter=$myarray[4]
+value=$counter.CookedValue}
+$myhashtable
+}
+
+$var.CounterSamples[0]
+
+$var.Timestamp
+$var.CounterSamples[0].Timestamp
+$myvalue=$counter.Path
+$myvalue
+$myarray=$myvalue.Split("\")
+$myarray
+
+$myhashtable
+
+function understand-counters
+
+{
+begin{}
+
+Process{$_.DisplayName}
+
+end{}
+
+}
+understand-counters
+Get-Service | understand-counters
+$var1=Get-Counter
+$var1 | Get-Member
+$var1.GetType()
+$var1=$_
+
+function understand-counters
+{
+begin{}
+process{
+if ($_.gettype().name -eq "PerformanceCounterSampleSet")
+{
+$var=$_
+foreach($counter in $var.CounterSamples)
+{
+$myvalue=$counter.Path
+$myarray=$myvalue.Split("\")
+$myhashtable=[PSCustomObject]@{Timestamp=$counter.Timestamp;
+compname=$myarray[2]
+counterset=$myarray[3]
+counter=$myarray[4]
+value=$counter.CookedValue}
+$myhashtable
+}
+}
+else{
+Write-Warning "Please provide proper input"
+}
+    }
+    end{}
+    
+    }
+
+    understand-counters
+
+
+    ping win16
+
+psprovider
+Get-PSProvider
+
+Set-Location wsman:
+set-location localhost
+set-location listener
+Remove-Item .\Listener_1305953032
+$cred=Get-Credential
+$cred
+Enter-PSSession -ComputerName win16 -Credential $cred
+
+
+Enable-psremoting
+
+New-NetFirewallRule -DisplayName "Windows Remote Management (HTTPS-In)" -Name "Windows Remote Management (HTTPS-In)" -Profile Any -LocalPort 5986 -Protocol TCP
+
+$Cert = New-SelfSignedCertificate -CertstoreLocation Cert:\LocalMachine\My -DnsName $env:COMPUTERNAME
+
+Export-Certificate  -Cert $Cert -FilePath "C:\Temp\cert.cer"
+
+get-childItem -Path WSMan:\LocalHost\Listener | %{$_.Transport -eq "HTTPS"}
+
+New-Item -Path WSMan:\LocalHost\Listener -Transport HTTPS -Address * -CertificateThumbPrint $Cert.Thumbprint -Force 
+
+Set-Item wsman:\localhost\Client\TrustedHosts -Value "192.168.1.19" -Force
+
+Set-NetConnectionProfile -NetworkCategory Private
+
+Enter-PSSession -ComputerName 192.168.1.19 -Credential $cred
+
+exit
+
+New-Item -Path WSMan:\LocalHost\Listener -Transport HTTPS -Address * -CertificateThumbPrint $Cert.Thumbprint -Force 
+
+Set-Item wsman:\localhost\Client\TrustedHosts -Value "*" -Concatenate -Force
+
+Set-NetConnectionProfile -NetworkCategory Private
