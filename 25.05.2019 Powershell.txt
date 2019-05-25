@@ -1,0 +1,147 @@
+function getasservice
+
+{
+$var=$_
+
+$allservices= Get-WmiObject win32_service
+
+foreach($service in $allservices)
+{
+$myvalue=$service.path
+$myarray=$myvalue.split("\")
+$nameofprocess=$myarray
+if ($var.processname -eq $nameofprocess)
+
+{
+
+$alldata=[PSCustomobject]@{processname=$var.processname;Relevantserice="YES"}
+}
+else
+{
+Write-Host "Relevant service for process hasn't been found"
+}
+
+$alldata | Out-File -FilePath "C:\abc.csv" -Append
+}
+    
+
+}
+
+Get-Process | getasservice
+
+$myvalue
+
+get-service
+
+psprovider
+
+psprovider wsman
+
+get-childItem -Path WSMan:\LocalHost\Listener
+
+New-Item -Path WSMan:\LocalHost\Listener -Transport HTTPS -Address * -CertificateThumbPrint $Cert.Thumbprint -Force
+
+Set-Item wsman:\localhost\Client\TrustedHosts -Value "192.168.1.24" -Force
+
+
+$cred=Get-Credential
+$servicename="BITS"
+
+
+
+Invoke-Command -ComputerName 192.168.1.24 -Credential $cred -ScriptBlock { if(Get-Service | Where-Object{$_.Name -eq $using:servicename}) 
+{
+Write-Host "The BITS service is present"
+
+}
+
+else
+
+{
+Write-Host "BITS service is not present"
+}
+
+
+ }
+
+ Get-Help Invoke-Command -ShowWindow
+
+ function sample
+
+ {
+
+ Write-Host ""
+ }
+
+<#
+.Synopsis
+   This is test
+.DESCRIPTION
+   This is a long description
+.EXAMPLE
+   get-func -param1 abc
+.EXAMPLE
+   Another example of how to use this cmdlet
+#>
+function get-func
+{
+    [CmdletBinding()]
+    [Alias()]
+    [OutputType([int])]
+    Param
+    (
+        # Param1 help description
+        [Parameter(Mandatory=$true,
+                   ValueFromPipelineByPropertyName=$true,
+                   Position=0)]
+        $Param1,
+
+        # Param2 help description
+        [int]
+        $Param2
+    )
+
+    Begin
+    {
+    }
+    Process
+    {
+
+    Write-Host "TEST"
+    Write-Host "TEST1"
+    Write-Verbose "SAMPLE"
+    Write-Verbose "SAMPLE1"
+    Write-Verbose "SAMPLE2"
+    }
+    End
+    {
+    }
+}
+
+get-func -Verbose
+
+Get-Service -Verbose
+
+get-help about_functions_advanced_parameters -ShowWindow
+
+get-help get-func -ShowWindow
+
+get-help about_module -ShowWindow
+
+
+
+$env:PSModulePath
+
+Import-Module -Name mymodule
+
+get-func
+
+Find-Module "DSInternals" -RequiredVersion 3.5 | Install-Module
+
+get-psrepository
+
+Get-Help New-ModuleManifest -Online
+
+New-ModuleManifest -PowerShellVersion 1.0 -AliasesToExport JKBC, DRC, TAC -Path C:\ps-test\ManifestTest.psd1
+
+New-ModuleManifest -Path "C:\Program Files\WindowsPowerShell\Modules\mymodule\mymodule.psd1"
