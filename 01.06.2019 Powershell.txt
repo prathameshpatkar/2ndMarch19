@@ -1,0 +1,76 @@
+Rename-Computer -NewName srv16 -Restart
+
+$cert=New-SelfSignedCertificate -CertstoreLocation Cert:\LocalMachine\My -DnsName $env:COMPUTERNAME
+New-Item -Path WSMan:\LocalHost\Listener -Transport HTTPS -Address * -CertificateThumbPrint $Cert.Thumbprint -Force
+
+get-childItem -Path WSMan:\LocalHost\Listener
+
+Enable-PSRemoting
+
+Set-Item wsman:\localhost\Client\TrustedHosts -Value "192.168.1.24" -Force
+
+$cred=Get-Credential
+$cred
+Enter-PSSession -ComputerName 192.168.1.24 -Credential $cred
+
+Get-DscResource
+
+Find-Module -Includes servi
+
+Get-DscResource -Name xhostsfile -Syntax
+
+Get-DscLocalConfigurationManager
+
+configuration firstconfiguration
+{
+Import-DscResource -ModuleName psdesiredstateconfiguration
+
+node client16
+{
+
+service bits
+{
+Name="BITS"
+State="Stopped"
+Ensure="Present"
+}
+
+}
+}
+firstconfiguration
+
+$cimsessionopt= New-CimSessionOption -UseSsl -SkipCACheck
+
+$cimsession=New-CimSession -Credential $cred -ComputerName client16 -SessionOption $cimsessionopt
+
+Start-DscConfiguration -Path "C:\Windows\System32\firstconfiguration" -Wait -Verbose -CimSession $cimsession
+
+find-module Xnetworking | Install-Module
+
+configuration newconfiguration
+{
+Import-DscResource -Name Xhostsfile -ModuleName Xnetworking
+
+node client16
+{
+xhostsfile hostsfileconfiguration
+{
+IPAddress= '192.168.1.23'
+hostname= "srv16"
+Ensure= "Present"
+}
+}
+
+}
+
+newconfiguration
+
+Start-DscConfiguration -Path "C:\Windows\System32\newconfiguration" -Wait -Verbose -CimSession $cimsession -force
+
+
+$pssessopt= New-PSSessionOption -SkipCACheck
+#$pssession= New-PSSession -ComputerName client16 -Credential $cred -UseSSL -SessionOption $pssessopt
+
+Invoke-Command -ComputerName client16 -Credential $cred -ScriptBlock{find-module Xnetworking | Install-Module} -SessionOption $pssessopt -UseSSL
+ 
+
