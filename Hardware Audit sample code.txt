@@ -1,0 +1,26 @@
+$inputcsv=import-csv C:\Users\Administrator\Desktop\Book1.csv
+$inputcsv
+
+$comparedate = (get-date).AddDays(-14)
+
+
+foreach($comp in $inputcsv)
+{
+
+    $comp
+
+    if($comp.Modified -lt $comparedate)
+    
+    {
+        $comp | Export-Csv C:\Temp\test.csv -Append
+
+        $myobject =[pscustomobject]@{name=$comp.Name
+                status=}
+    
+    } 
+
+
+
+
+
+    Copy-Item 
