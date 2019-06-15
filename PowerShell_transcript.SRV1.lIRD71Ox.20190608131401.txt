@@ -1,0 +1,917 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20190608131401
+Username: SRV1\Administrator
+RunAs User: SRV1\Administrator
+Machine: SRV1 (Microsoft Windows NT 10.0.14393.0)
+Host Application: C:\Windows\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe
+Process ID: 2388
+PSVersion: 5.1.14393.693
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.14393.693
+BuildVersion: 10.0.14393.693
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\Administrator\Documents\PowerShell_transcript.SRV1.lIRD71Ox.20190608131401.txt
+PS C:\Users\Administrator> $configurationData =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+PS C:\Users\Administrator> Configuration DSCRunDemo
+    {
+        Param
+        (
+        [Parameter(Mandatory)]
+        [pscredential] $Credential
+        )
+
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
+    
+    Node $AllNodes.NodeName
+        {
+        Script DSCRunDemo1
+            {
+                SetScript =
+                {
+                    Write-Verbose -Message $(whoami)
+                }
+                TestScript =
+                    {
+                        return $false
+                    }
+                GetScript =
+                {
+                    return @{}
+                }
+                   # PSDscRunAsCredential = $Credential
+            }
+        }
+    }
+
+PS C:\Users\Administrator> DSCRunDemo -PsDscRunAsCredential $credential -ConfigurationData $configuration
+PS C:\Users\Administrator> Start-dscconfiguration -path ".\"  -wait -verbose -force
+PS C:\Users\Administrator> TerminatingError(Start-DscConfiguration): "The computer name was not specified and the configuration directory does not have any configuration files."
+Start-dscconfiguration : The computer name was not specified and the configuration directory does not have any 
+configuration files.
+At line:1 char:1
++ Start-dscconfiguration -path ".\"  -wait -verbose -force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Start-DscConfiguration], ArgumentException
+    + FullyQualifiedErrorId : 
+System.ArgumentException,Microsoft.PowerShell.DesiredStateConfiguration.Commands.StartDscConfigurationCommand
+Start-dscconfiguration : The computer name was not specified and the configuration directory does not have any configuration files.
+At line:1 char:1
++ Start-dscconfiguration -path ".\"  -wait -verbose -force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Start-DscConfiguration], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.DesiredStateConfiguration.Commands.StartDscConfigurationCommand
+
+PS C:\Users\Administrator>     DSCRunDemo -PsDscRunAsCredential $credential -ConfigurationData $configuration -OutputPath C:\DemoGroupConfiguration
+PS C:\Users\Administrator>     Start-dscconfiguration -path "C:\DemoGroupConfiguration"  -wait -verbose -force
+VERBOSE: Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = SendConfigurationApply,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+VERBOSE: An LCM method call arrived from computer SRV1 with user sid S-1-5-21-2833469331-3397742219-1677346579-500.
+VERBOSE: [SRV1]: LCM:  [ Start  Set      ]
+VERBOSE: [SRV1]: LCM:  [ Start  Resource ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]: LCM:  [ Start  Test     ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]: LCM:  [ End    Test     ]  [[Script]DSCRunDemo]  in 0.0630 seconds.
+VERBOSE: [SRV1]: LCM:  [ Start  Set      ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]:                            [[Script]DSCRunDemo] Performing the operation "Set-TargetResource" on target "Executing the SetScript with the user supplied credential".
+VERBOSE: [SRV1]:                            [[Script]DSCRunDemo] nt authority\system
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]  [[Script]DSCRunDemo]  in 0.1090 seconds.
+VERBOSE: [SRV1]: LCM:  [ End    Resource ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]    in  0.5630 seconds.
+VERBOSE: Operation 'Invoke CimMethod' complete.
+VERBOSE: Time taken for configuration job to complete is 0.754 seconds
+PS C:\Users\Administrator> $credential =Get-Credential
+PS C:\Users\Administrator> $configurationData =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+PS C:\Users\Administrator> Configuration DSCRunDemo
+    {
+        Param
+        (
+        [Parameter(Mandatory)]
+        [pscredential] $Credential
+        )
+
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
+    
+    Node $AllNodes.NodeName
+        {
+        Script DSCRunDemo1
+            {
+                SetScript =
+                {
+                    Write-Verbose -Message $(whoami)
+                }
+                TestScript =
+                    {
+                        return $false
+                    }
+                GetScript =
+                {
+                    return @{}
+                }
+                   # PSDscRunAsCredential = $Credential
+            }
+        }
+    }
+
+PS C:\Users\Administrator>     DSCRunDemo -PsDscRunAsCredential $credential -ConfigurationData $configuration -OutputPath C:\DemoGroupConfiguration
+PS C:\Users\Administrator>     Start-dscconfiguration -path "C:\DemoGroupConfiguration"  -wait -verbose -force
+VERBOSE: Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = SendConfigurationApply,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+VERBOSE: An LCM method call arrived from computer SRV1 with user sid S-1-5-21-2833469331-3397742219-1677346579-500.
+VERBOSE: [SRV1]: LCM:  [ Start  Set      ]
+VERBOSE: [SRV1]: LCM:  [ Start  Resource ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]: LCM:  [ Start  Test     ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]: LCM:  [ End    Test     ]  [[Script]DSCRunDemo]  in 0.0630 seconds.
+VERBOSE: [SRV1]: LCM:  [ Start  Set      ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]:                            [[Script]DSCRunDemo] Performing the operation "Set-TargetResource" on target "Executing the SetScript with the user supplied credential".
+VERBOSE: [SRV1]:                            [[Script]DSCRunDemo] nt authority\system
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]  [[Script]DSCRunDemo]  in 0.0930 seconds.
+VERBOSE: [SRV1]: LCM:  [ End    Resource ]  [[Script]DSCRunDemo]
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]    in  0.5000 seconds.
+VERBOSE: Operation 'Invoke CimMethod' complete.
+VERBOSE: Time taken for configuration job to complete is 0.622 seconds
+PS C:\Users\Administrator> $configurationData =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "srv1"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+PS C:\Users\Administrator> Configuration DSCRunDemo
+    {
+        Param
+        (
+        [Parameter(Mandatory)]
+        [pscredential] $Credential
+        )
+
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
+    
+    Node srv1
+        {
+        Script DSCRunDemo1
+            {
+                SetScript =
+                {
+                    Write-Verbose -Message $(whoami)
+                }
+                TestScript =
+                    {
+                        return $false
+                    }
+                GetScript =
+                {
+                    return @{}
+                }
+                   # PSDscRunAsCredential = $Credential
+            }
+        }
+    }
+
+PS C:\Users\Administrator>     DSCRunDemo -PsDscRunAsCredential $credential -ConfigurationData $configuration -OutputPath C:\DemoGroupConfiguration
+PS C:\Users\Administrator> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemo'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemo'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemo'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemo'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemo'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemo:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "Srv1"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+PS C:\Users\Administrator> Configuration DSCRunDemodinesh
+    {
+        Param
+        (
+        [Parameter(Mandatory)]
+        [pscredential] $Credential
+        )
+
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
+    
+    Node Srv1
+        {
+        Script DSCRunDemo1
+            {
+                SetScript =
+                {
+                    Write-Verbose -Message $(whoami)
+                }
+                TestScript =
+                    {
+                        return $false
+                    }
+                GetScript =
+                {
+                    return @{}
+                }
+                   # PSDscRunAsCredential = $Credential
+            }
+        }
+    }
+
+PS C:\Users\Administrator>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+
+
+PS C:\Users\Administrator>     Start-dscconfiguration -path "C:\Users\Administrator\DSCRunDemodinesh"  -wait -verbose -force
+VERBOSE: Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = SendConfigurationApply,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.
+VERBOSE: An LCM method call arrived from computer SRV1 with user sid S-1-5-21-2833469331-3397742219-1677346579-500.
+VERBOSE: [SRV1]: LCM:  [ Start  Set      ]
+VERBOSE: [SRV1]: LCM:  [ Start  Resource ]  [[Script]DSCRunDemo1]
+VERBOSE: [SRV1]: LCM:  [ Start  Test     ]  [[Script]DSCRunDemo1]
+VERBOSE: [SRV1]: LCM:  [ End    Test     ]  [[Script]DSCRunDemo1]  in 0.6100 seconds.
+VERBOSE: [SRV1]: LCM:  [ Start  Set      ]  [[Script]DSCRunDemo1]
+VERBOSE: [SRV1]:                            [[Script]DSCRunDemo1] Performing the operation "Set-TargetResource" on target "Executing the SetScript with the user supplied credential".
+VERBOSE: [SRV1]:                            [[Script]DSCRunDemo1] srv1\administrator
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]  [[Script]DSCRunDemo1]  in 0.1560 seconds.
+VERBOSE: [SRV1]: LCM:  [ End    Resource ]  [[Script]DSCRunDemo1]
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]
+VERBOSE: [SRV1]: LCM:  [ End    Set      ]    in  1.1720 seconds.
+VERBOSE: Operation 'Invoke CimMethod' complete.
+VERBOSE: Time taken for configuration job to complete is 1.327 seconds
+PS C:\Users\Administrator> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+PS C:\Users\Administrator>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+PS C:\Users\Administrator> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "srv1"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+PS C:\Users\Administrator>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+
+
+PS C:\Users\Administrator> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "srv1"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    }
+
+
+PS C:\Users\Administrator>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+
+
+PS C:\Users\Administrator> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "srv2"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    }
+PS C:\Users\Administrator>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+PS C:\Users\Administrator> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator> cd .\DSCRunDemodinesh
+PS C:\Users\Administrator\DSCRunDemodinesh> ls
+
+
+    Directory: C:\Users\Administrator\DSCRunDemodinesh
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       08-06-2019     13:35           2572 Srv1.mof
+
+
+PS C:\Users\Administrator\DSCRunDemodinesh> rm .\Srv1.mof
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "srv1"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    }
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+
+
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "localhost1"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    }
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "client1"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    }
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "client1"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    
+The hash literal was incomplete.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : IncompleteHashLiteral
+
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "client1"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    }
+PS C:\Users\Administrator\DSCRunDemodinesh>     $credential =Get-Credential
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh1 =
+    @{
+        AllNodes =
+        @(
+            @{
+                NodeName = "client1"
+            },
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+
+        )
+    }
+
+Configuration DSCRunDemodinesh1
+    {
+        Param
+        (
+        [Parameter(Mandatory)]
+        [pscredential] $Credential
+        )
+
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
+    
+    Node Srv1
+        {
+        Script DSCRunDemo1
+            {
+                SetScript =
+                {
+                    Write-Verbose -Message $(whoami)
+                }
+                TestScript =
+                    {
+                        return $false
+                    }
+                GetScript =
+                {
+                    return @{}
+                }
+                
+            }
+        }
+    }
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh1 -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh1
+>> TerminatingError(DSCRunDemodinesh1): "Cannot process command because of one or more missing mandatory parameters: Credential."
+DSCRunDemodinesh1 : Cannot process command because of one or more missing mandatory parameters: Credential.
+At line:1 char:5
++     DSCRunDemodinesh1 -PsDscRunAsCredential $credential -Configuratio ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [DSCRunDemodinesh1], ParameterBindingException
+    + FullyQualifiedErrorId : MissingMandatoryParameter,DSCRunDemodinesh1
+DSCRunDemodinesh1 : Cannot process command because of one or more missing mandatory parameters: Credential.
+At line:1 char:5
++     DSCRunDemodinesh1 -PsDscRunAsCredential $credential -Configuratio ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [DSCRunDemodinesh1], ParameterBindingException
+    + FullyQualifiedErrorId : MissingMandatoryParameter,DSCRunDemodinesh1
+
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh1 -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh1 -Credential $credential
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:29 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:29 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh1:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator\DSCRunDemodinesh> DSCRunDemodinesh1 -PsDscRunAsCredential $credential -ConfigurationData $configurationDatadinesh1
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:29 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:29 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh1:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator\DSCRunDemodinesh> get-help about_dsc*
+Do you want to run Update-Help?
+The Update-Help cmdlet downloads the most current Help files for Windows PowerShell modules, and installs them on your computer. For more information about the Update-Help cmdlet, see http://go.microsoft.com/fwlink/?LinkId=210614.
+&Yes  &No  &Suspend
+N
+PS C:\Users\Administrator\DSCRunDemodinesh> Get-DscResource -name script -Module Psdesiredstateconfiguration -Syntax
+Script [String] #ResourceName
+{
+    GetScript = [string]
+    SetScript = [string]
+    TestScript = [string]
+    [Credential = [PSCredential]]
+    [DependsOn = [string[]]]
+    [PsDscRunAsCredential = [PSCredential]]
+}
+PS C:\Users\Administrator\DSCRunDemodinesh> Configuration DSCRunDemodinesh1
+    {
+        Param
+        (
+        [Parameter(Mandatory)]
+        [pscredential] $Credential
+        )
+
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
+    
+    Node Srv1
+        {
+        Script DSCRunDemo1
+            {
+                SetScript =
+                {
+                    Write-Verbose -Message $(whoami)
+                }
+                TestScript =
+                    {
+                        return $false
+                    }
+                GetScript =
+                {
+                    return @{}
+                }
+                PsDscRunAsCredential = $Credential
+                
+            }
+        }
+    }
+
+
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh1 -ConfigurationData $configurationDatadinesh1 -Credential $credential
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh1:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh1 =
+    @{
+        AllNodes =
+        @(
+            
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            },
+            @{
+                NodeName = "client1"
+            }
+
+        )
+    }
+
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh1 -ConfigurationData $configurationDatadinesh1 -Credential $credential
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Converting and storing encrypted passwords as plain text is not recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729"
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 
+'Script': Converting and storing encrypted passwords as plain text is not recommended. For more information on securing 
+credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+ConvertTo-MOFInstance : System.InvalidOperationException error processing property 'PsDscRunAsCredential' OF TYPE 'Script': Converting and storing encrypted passwords as plain text is not
+recommended. For more information on securing credentials in MOF file, please refer to MSDN blog: http://go.microsoft.com/fwlink/?LinkId=393729
+At line:13 char:9
++   Script
+At line:341 char:16
++     $aliasId = ConvertTo-MOFInstance $keywordName $canonicalizedValue
++                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Write-Error], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessProperty,ConvertTo-MOFInstance
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+>> TerminatingError(): "Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately."
+Compilation errors occurred while processing configuration 'DSCRunDemodinesh1'. Please review the errors reported in error stream and modify your configuration code appropriately.
+At C:\Windows\system32\WindowsPowerShell\v1.0\Modules\PSDesiredStateConfiguration\PSDesiredStateConfiguration.psm1:3917 char:5
++     throw $ErrorRecord
++     ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (DSCRunDemodinesh1:String) [], InvalidOperationException
+    + FullyQualifiedErrorId : FailToProcessConfiguration
+
+PS C:\Users\Administrator\DSCRunDemodinesh> $PSVersionTable
+
+Name                           Value
+----                           -----
+PSVersion                      5.1.14393.693
+PSEdition                      Desktop
+PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}
+BuildVersion                   10.0.14393.693
+CLRVersion                     4.0.30319.42000
+WSManStackVersion              3.0
+PSRemotingProtocolVersion      2.3
+SerializationVersion           1.1.0.1
+
+
+PS C:\Users\Administrator\DSCRunDemodinesh> 
+Configuration DSCRunDemodinesh1
+    {
+        Param
+        (
+        [Parameter(Mandatory)]
+        [pscredential] $Credential
+        )
+
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
+    
+    Node $AllNode.NodeName
+        {
+        Script DSCRunDemo1
+            {
+                SetScript =
+                {
+                    Write-Verbose -Message $(whoami)
+                }
+                TestScript =
+                    {
+                        return $false
+                    }
+                GetScript =
+                {
+                    return @{}
+                }
+
+                
+            }
+        }
+    }
+PS C:\Users\Administrator\DSCRunDemodinesh> $configurationDatadinesh1 =
+    @{
+        AllNodes =
+        @(
+            
+            @{
+                NodeName = "*"
+                PsDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            },
+            @{
+                NodeName = "client1"
+            }
+
+        )
+    }
+PS C:\Users\Administrator\DSCRunDemodinesh>     DSCRunDemodinesh1 -ConfigurationData $configurationDatadinesh1 -Credential $credential -PsDscRunAsCredential $credential 
+PS C:\Users\Administrator\DSCRunDemodinesh>     Start-dscconfiguration -path "C:\Users\Administrator\DSCRunDemodinesh"  -wait -verbose -force
+PS C:\Users\Administrator\DSCRunDemodinesh> TerminatingError(Start-DscConfiguration): "The computer name was not specified and the configuration directory does not have any configuration files."
+Start-dscconfiguration : The computer name was not specified and the configuration directory does not have any 
+configuration files.
+At line:1 char:5
++     Start-dscconfiguration -path "C:\Users\Administrator\DSCRunDemodi ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Start-DscConfiguration], ArgumentException
+    + FullyQualifiedErrorId : 
+System.ArgumentException,Microsoft.PowerShell.DesiredStateConfiguration.Commands.StartDscConfigurationCommand
+Start-dscconfiguration : The computer name was not specified and the configuration directory does not have any configuration files.
+At line:1 char:5
++     Start-dscconfiguration -path "C:\Users\Administrator\DSCRunDemodi ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Start-DscConfiguration], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.DesiredStateConfiguration.Commands.StartDscConfigurationCommand
+
+PS C:\Users\Administrator\DSCRunDemodinesh>     Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20190608161755
+**********************
