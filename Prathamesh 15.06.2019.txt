@@ -1,0 +1,868 @@
+
+Administrator@srv16 MINGW64 ~
+$ mkdir cd
+
+Administrator@srv16 MINGW64 ~
+$ mkdir cd c:\testgit
+mkdir: cannot create directory ‘cd’: File exists
+
+Administrator@srv16 MINGW64 ~
+$ mkdir cd c:\temp\testgit
+mkdir: cannot create directory ‘cd’: File exists
+
+Administrator@srv16 MINGW64 ~
+$ mkdir prathamesh
+
+Administrator@srv16 MINGW64 ~
+$ ls
+ AppData/             Contacts/   'Local Settings'@   NTUSER.DAT{f6727816-9fff-11e8-865f-c221e44c9de3}.TxR.0.regtrans-ms                             ntuser.ini      SendTo@
+'Application Data'@   Cookies@     Music/             NTUSER.DAT{f6727816-9fff-11e8-865f-c221e44c9de3}.TxR.1.regtrans-ms                             Pictures/      'Start Menu'@
+ C:prathamesh/        Desktop/    'My Documents'@     NTUSER.DAT{f6727816-9fff-11e8-865f-c221e44c9de3}.TxR.2.regtrans-ms                             prathamesh/     Templates@
+ C:prathameshls/      Documents/   NetHood@           NTUSER.DAT{f6727816-9fff-11e8-865f-c221e44c9de3}.TxR.blf                                       PrintHood@      Videos/
+ c:temptestgit/       Downloads/   NTUSER.DAT         NTUSER.DAT{f6727817-9fff-11e8-865f-c221e44c9de3}.TM.blf                                        Recent@
+ c:testgit/           Favorites/   ntuser.dat.LOG1    NTUSER.DAT{f6727817-9fff-11e8-865f-c221e44c9de3}.TMContainer00000000000000000001.regtrans-ms  'Saved Games'/
+ cd/                  Links/       ntuser.dat.LOG2    NTUSER.DAT{f6727817-9fff-11e8-865f-c221e44c9de3}.TMContainer00000000000000000002.regtrans-ms   Searches/
+
+Administrator@srv16 MINGW64 ~
+$ cd prathamesh
+
+Administrator@srv16 MINGW64 ~/prathamesh
+$ ls
+
+Administrator@srv16 MINGW64 ~/prathamesh
+$ git init
+Initialized empty Git repository in C:/Users/Administrator/prathamesh/.git/
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ ls
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ ls -a
+./  ../  .git/
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git lock
+git: 'lock' is not a git command. See 'git --help'.
+
+The most similar command is
+        fsck
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git log
+fatal: your current branch 'master' does not have any commits yet
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ touch test.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        test.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git add test.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   test.txt
+
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ vi test.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   test.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   test.txt
+
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+diff --git a/test.txt b/test.txt
+index e69de29..5f804e6 100644
+--- a/test.txt
++++ b/test.txt
+@@ -0,0 +1,3 @@
++This is test
++sample text
++abc
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git add test.txt
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ vi test.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+diff --git a/test.txt b/test.txt
+index 5f804e6..0725a0e 100644
+--- a/test.txt
++++ b/test.txt
+@@ -1,3 +1,3 @@
+ This is test
+ sample text
+-abc
++
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ touch test2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ vi test2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+diff --git a/test.txt b/test.txt
+index 5f804e6..0725a0e 100644
+--- a/test.txt
++++ b/test.txt
+@@ -1,3 +1,3 @@
+ This is test
+ sample text
+-abc
++
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git add test2.txt
+warning: LF will be replaced by CRLF in test2.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+diff --git a/test.txt b/test.txt
+index 5f804e6..0725a0e 100644
+--- a/test.txt
++++ b/test.txt
+@@ -1,3 +1,3 @@
+ This is test
+ sample text
+-abc
++
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ vi test2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in test2.txt.
+The file will have its original line endings in your working directory
+diff --git a/test.txt b/test.txt
+index 5f804e6..0725a0e 100644
+--- a/test.txt
++++ b/test.txt
+@@ -1,3 +1,3 @@
+ This is test
+ sample text
+-abc
++
+diff --git a/test2.txt b/test2.txt
+index e901aa6..92f24cd 100644
+--- a/test2.txt
++++ b/test2.txt
+@@ -1,3 +1,3 @@
+ xyz
+ this is another test file
+-qwerty
++qwer
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ vi test2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in test2.txt.
+The file will have its original line endings in your working directory
+diff --git a/test.txt b/test.txt
+index 5f804e6..0725a0e 100644
+--- a/test.txt
++++ b/test.txt
+@@ -1,3 +1,3 @@
+ This is test
+ sample text
+-abc
++
+diff --git a/test2.txt b/test2.txt
+index e901aa6..92f24cd 100644
+--- a/test2.txt
++++ b/test2.txt
+@@ -1,3 +1,3 @@
+ xyz
+ this is another test file
+-qwerty
++qwer
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   test.txt
+        new file:   test2.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   test.txt
+        modified:   test2.txt
+
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git add *
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in test2.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git commit -m "This is my first commit"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'Administrator@srv16.(none)')
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git config --global user.email "prathamesh9101@rediffmail.com"
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git config --global user.name "prathamesh patkar"
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git commit -m "This is my first commit"
+[master (root-commit) 9c45826] This is my first commit
+ 2 files changed, 6 insertions(+)
+ create mode 100644 test.txt
+ create mode 100644 test2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git log
+commit 9c45826d0f77978396c1c3cb3fde354841952b8c (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:32:02 2019 +0530
+
+    This is my first commit
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ touch test3.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ vi test3.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git add test3.txt
+warning: LF will be replaced by CRLF in test3.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git diff
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   test3.txt
+
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ touch test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ vi test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git add test4.txt
+warning: LF will be replaced by CRLF in test4.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   test3.txt
+        new file:   test4.txt
+
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git rm--cached test3.txt
+git: 'rm--cached' is not a git command. See 'git --help'.
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git rm --cached test3.txt
+rm 'test3.txt'
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   test4.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        test3.txt
+
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git commit -m "This is my second commit"
+[master 436fec8] This is my second commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        test3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git log
+commit 436fec88ad5170b355042421bcc3d0ab8de3a4c9 (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:54:07 2019 +0530
+
+    This is my second commit
+
+commit 9c45826d0f77978396c1c3cb3fde354841952b8c
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:32:02 2019 +0530
+
+    This is my first commit
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        test3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git add test3.txt
+warning: LF will be replaced by CRLF in test3.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git commit -m "This is my second commit"
+[master baedfbf] This is my second commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test3.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git log
+commit baedfbf5e205db6bf6beb271ebbd6549c4688cf0 (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:55:18 2019 +0530
+
+    This is my second commit
+
+commit 436fec88ad5170b355042421bcc3d0ab8de3a4c9
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:54:07 2019 +0530
+
+    This is my second commit
+
+commit 9c45826d0f77978396c1c3cb3fde354841952b8c
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:32:02 2019 +0530
+
+    This is my first commit
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ ls
+test.txt  test2.txt  test3.txt  test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git reset HEAD~1
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        test3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        test3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ ls
+test.txt  test2.txt  test3.txt  test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git log
+commit 436fec88ad5170b355042421bcc3d0ab8de3a4c9 (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:54:07 2019 +0530
+
+    This is my second commit
+
+commit 9c45826d0f77978396c1c3cb3fde354841952b8c
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 14:32:02 2019 +0530
+
+    This is my first commit
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git revert 9c45826
+[master d0a5fc9] Revert "This is my first commit"
+ 2 files changed, 6 deletions(-)
+ delete mode 100644 test.txt
+ delete mode 100644 test2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        test3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ ls
+test3.txt  test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ cd ..
+
+Administrator@srv16 MINGW64 ~
+$ cd prathamesh
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ git clone https://github.com/prathameshpatkar/Gitrepo.git
+Cloning into 'Gitrepo'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ ls
+Gitrepo/  test3.txt  test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ ls -a
+./  ../  .git/  Gitrepo/  test3.txt  test4.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh (master)
+$ cd gitrepo
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ ls
+README.md
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ ls -a
+./  ../  .git/  README.md
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ touch sample1.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ vi sample1.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ touch sample2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ vi sample2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git add *
+warning: LF will be replaced by CRLF in sample1.txt.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in sample2.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   sample1.txt
+        new file:   sample2.txt
+
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git commit -m "This is my first commit"
+[master 968d653] This is my first commit
+ 2 files changed, 2 insertions(+)
+ create mode 100644 sample1.txt
+ create mode 100644 sample2.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git log
+commit 968d653a20fe4a52913230395d1bc51974be23fe (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:18:30 2019 +0530
+
+    This is my first commit
+
+commit fa47340fbfccf7537da362c95a118814b6a58313 (origin/master, origin/HEAD)
+Author: prathameshpatkar <48145449+prathameshpatkar@users.noreply.github.com>
+Date:   Sat Jun 15 15:11:06 2019 +0530
+
+    Initial commit
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ touch sample3.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ vi sample3.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git add sample3.txt
+warning: LF will be replaced by CRLF in sample3.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git commit -m "This is my second commit"
+[master 50c0534] This is my second commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 sample3.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git log
+commit 50c053423d1c9d05ffbe3831c752df13c3332b86 (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:20:05 2019 +0530
+
+    This is my second commit
+
+commit 968d653a20fe4a52913230395d1bc51974be23fe
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:18:30 2019 +0530
+
+    This is my first commit
+
+commit fa47340fbfccf7537da362c95a118814b6a58313 (origin/master, origin/HEAD)
+Author: prathameshpatkar <48145449+prathameshpatkar@users.noreply.github.com>
+Date:   Sat Jun 15 15:11:06 2019 +0530
+
+    Initial commit
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git log ?
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ help
+GNU bash, version 4.4.23(1)-release (x86_64-pc-msys)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ job_spec [&]                                                                                                    history [-c] [-d offset] [n] or history -anrw [filename] or history -ps arg [arg...]
+ (( expression ))                                                                                                if COMMANDS; then COMMANDS; [ elif COMMANDS; then COMMANDS; ]... [ else COMMANDS; ] fi
+ . filename [arguments]                                                                                          jobs [-lnprs] [jobspec ...] or jobs -x command [args]
+ :                                                                                                               kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+ [ arg... ]                                                                                                      let arg [arg ...]
+ [[ expression ]]                                                                                                local [option] name[=value] ...
+ alias [-p] [name[=value] ... ]                                                                                  logout [n]
+ bg [job_spec ...]                                                                                               mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array]
+ bind [-lpsvPSVX] [-m keymap] [-f filename] [-q name] [-u name] [-r keyseq] [-x keyseq:shell-command] [keyseq:>  popd [-n] [+N | -N]
+ break [n]                                                                                                       printf [-v var] format [arguments]
+ builtin [shell-builtin [arg ...]]                                                                               pushd [-n] [+N | -N | dir]
+ caller [expr]                                                                                                   pwd [-LPW]
+ case WORD in [PATTERN [| PATTERN]...) COMMANDS ;;]... esac                                                      read [-ers] [-a array] [-d delim] [-i text] [-n nchars] [-N nchars] [-p prompt] [-t timeout] [-u fd] [name .>
+ cd [-L|[-P [-e]] [-@]] [dir]                                                                                    readarray [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array]
+ command [-pVv] command [arg ...]                                                                                readonly [-aAf] [name[=value] ...] or readonly -p
+ compgen [-abcdefgjksuv] [-o option] [-A action] [-G globpat] [-W wordlist]  [-F function] [-C command] [-X fi>  return [n]
+ complete [-abcdefgjksuv] [-pr] [-DE] [-o option] [-A action] [-G globpat] [-W wordlist]  [-F function] [-C co>  select NAME [in WORDS ... ;] do COMMANDS; done
+ compopt [-o|+o option] [-DE] [name ...]                                                                         set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]
+ continue [n]                                                                                                    shift [n]
+ coproc [NAME] command [redirections]                                                                            shopt [-pqsu] [-o] [optname ...]
+ declare [-aAfFgilnrtux] [-p] [name[=value] ...]                                                                 source filename [arguments]
+ dirs [-clpv] [+N] [-N]                                                                                          suspend [-f]
+ disown [-h] [-ar] [jobspec ... | pid ...]                                                                       test [expr]
+ echo [-neE] [arg ...]                                                                                           time [-p] pipeline
+ enable [-a] [-dnps] [-f filename] [name ...]                                                                    times
+ eval [arg ...]                                                                                                  trap [-lp] [[arg] signal_spec ...]
+ exec [-cl] [-a name] [command [arguments ...]] [redirection ...]                                                true
+ exit [n]                                                                                                        type [-afptP] name [name ...]
+ export [-fn] [name[=value] ...] or export -p                                                                    typeset [-aAfFgilnrtux] [-p] name[=value] ...
+ false                                                                                                           ulimit [-SHabcdefiklmnpqrstuvxPT] [limit]
+ fc [-e ename] [-lnr] [first] [last] or fc -s [pat=rep] [command]                                                umask [-p] [-S] [mode]
+ fg [job_spec]                                                                                                   unalias [-a] name [name ...]
+ for NAME [in WORDS ... ] ; do COMMANDS; done                                                                    unset [-f] [-v] [-n] [name ...]
+ for (( exp1; exp2; exp3 )); do COMMANDS; done                                                                   until COMMANDS; do COMMANDS; done
+ function name { COMMANDS ; } or name () { COMMANDS ; }                                                          variables - Names and meanings of some shell variables
+ getopts optstring name [arg]                                                                                    wait [-n] [id ...]
+ hash [-lr] [-p pathname] [-dt] [name ...]                                                                       while COMMANDS; do COMMANDS; done
+ help [-dms] [pattern ...]                                                                                       { COMMANDS ; }
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git history
+git: 'history' is not a git command. See 'git --help'.
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git log
+commit 50c053423d1c9d05ffbe3831c752df13c3332b86 (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:20:05 2019 +0530
+
+    This is my second commit
+
+commit 968d653a20fe4a52913230395d1bc51974be23fe
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:18:30 2019 +0530
+
+    This is my first commit
+
+commit fa47340fbfccf7537da362c95a118814b6a58313 (origin/master, origin/HEAD)
+Author: prathameshpatkar <48145449+prathameshpatkar@users.noreply.github.com>
+Date:   Sat Jun 15 15:11:06 2019 +0530
+
+    Initial commit
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git log
+commit 50c053423d1c9d05ffbe3831c752df13c3332b86 (HEAD -> master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:20:05 2019 +0530
+
+    This is my second commit
+
+commit 968d653a20fe4a52913230395d1bc51974be23fe
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:18:30 2019 +0530
+
+    This is my first commit
+
+commit fa47340fbfccf7537da362c95a118814b6a58313 (origin/master, origin/HEAD)
+Author: prathameshpatkar <48145449+prathameshpatkar@users.noreply.github.com>
+Date:   Sat Jun 15 15:11:06 2019 +0530
+
+    Initial commit
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git push
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 571 bytes | 190.00 KiB/s, done.
+Total 7 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/prathameshpatkar/Gitrepo.git
+   fa47340..50c0534  master -> master
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git branch firstfeature
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (master)
+$ git checkout firstfeature
+Switched to branch 'firstfeature'
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ touch abc.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ vi abc.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ git add abc.txt
+warning: LF will be replaced by CRLF in abc.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ touch xyz.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ vi xyz.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ git add xyz.txt
+warning: LF will be replaced by CRLF in xyz.txt.
+The file will have its original line endings in your working directory
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ git commit -m "This is my branch commit"
+[firstfeature 112b88e] This is my branch commit
+ 2 files changed, 2 insertions(+)
+ create mode 100644 abc.txt
+ create mode 100644 xyz.txt
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ git status
+On branch firstfeature
+nothing to commit, working tree clean
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ git log
+commit 112b88ec2fa5e1172a60d72e9cef7c8c4fce72a1 (HEAD -> firstfeature)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:29:55 2019 +0530
+
+    This is my branch commit
+
+commit 50c053423d1c9d05ffbe3831c752df13c3332b86 (origin/master, origin/HEAD, master)
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:20:05 2019 +0530
+
+    This is my second commit
+
+commit 968d653a20fe4a52913230395d1bc51974be23fe
+Author: prathamesh patkar <prathamesh9101@rediffmail.com>
+Date:   Sat Jun 15 15:18:30 2019 +0530
+
+    This is my first commit
+
+commit fa47340fbfccf7537da362c95a118814b6a58313
+Author: prathameshpatkar <48145449+prathameshpatkar@users.noreply.github.com>
+Date:   Sat Jun 15 15:11:06 2019 +0530
+
+    Initial commit
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ git push
+fatal: The current branch firstfeature has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin firstfeature
+
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$ git push --set-upstream origin firstfeature
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 334 bytes | 334.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'firstfeature' on GitHub by visiting:
+remote:      https://github.com/prathameshpatkar/Gitrepo/pull/new/firstfeature
+remote:
+To https://github.com/prathameshpatkar/Gitrepo.git
+ * [new branch]      firstfeature -> firstfeature
+Branch 'firstfeature' set up to track remote branch 'firstfeature' from 'origin'.
+
+Administrator@srv16 MINGW64 ~/prathamesh/gitrepo (firstfeature)
+$
