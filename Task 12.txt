@@ -1,0 +1,27 @@
+$ cd C:\users\ppatkar\desktop\NewFolder
+$ git init 
+$ git add
+
+$ git config --global Prathamesh.Patkar
+$ git config --global user.email prathamesh9101@rediffmail.com
+
+$ git config --list will show whats configured globally
+
+$gitconfig -1
+
+$git init
+touch mytext.txt
+$git add 
+$git -commit -m "My first commit"
+$git push
+
+
+$git init
+touch mytext.txt
+touch mytext1.txt
+$git add 
+$git -commit -m "My first commit"
+touch touch mytext1.txt
+$git add
+$git -commit -a -m "My first commit"
+$git push
