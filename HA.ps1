@@ -1,24 +1,40 @@
-﻿$xls= New-Object -ComObject excel.application
+﻿
+
+Function Get-FileName1($initial)
+{
+Write-Host "Please select csv file extracted from AD"
+
+    [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
+    
+    $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+    $OpenFileDialog.initialDirectory = $initial
+    $OpenFileDialog.filter = "CSV (*.csv)| *.csv"
+    $OpenFileDialog.ShowDialog() | Out-Null
+    $OpenFileDialog.filename
+}
+$a=Get-FileName1 -initial $initial
+$inputdata =$a
+$inputcsv1=import-csv $a
+
+<#$xls= New-Object -ComObject excel.application
 $xls.Visible=$true
 $xls.DisplayAlerts=$false
-$openxls=$xls.Workbooks.Open("C:\Users\ppatkar\Desktop\Prathamesh\Hardware Audit\TEST\Hardware Audit- April 2019")
+$openxls=$xls.Workbooks.Open($inputcsv1)
 $sheets=$openxls.Worksheets.Item(1)
 $editxlrow2=$sheets.Cells.item(2,2)
 $editxlrow2.EntireRow.delete()
 $editxlrow2=$sheets.Cells.item(2,2)
-$editxlrow2.EntireRow.delete()
+$editxlrow2.EntireRow.delete()#>
+
 #$editxlrow3=$editxlrow2.cells.item(2,2)
 #$editxlrow3=$editxlrow2.Cells.item(2,2)
 #$editxlrow3.EntireRow.delete()
-
-
 #$editxlrow3.EntireRow.delete()
 #$xlrows.Cells
 #$editxlrow3= $xlrows.Cells.Item(1,3)
 #$editxlrow3.EntireRow.Delete()
-$openxls.Close($true)
-$xls.Quit()
-
+#$openxls.Close($true)
+<#$xls.Quit()
 $xls= New-Object -ComObject excel.application
 $xls.Visible=$true
 $xls.DisplayAlerts=$false
@@ -61,5 +77,80 @@ $v
 $openxls.Save()
 
 $openxls.Close($true)
-$xls.Quit()
+$xls.Quit()#>
+
+<#Function Get-FileName($initialDirectory)
+{
+Write-Host "Please select csv file extracted from AD"
+
+    [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
+    
+    $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+    $OpenFileDialog.initialDirectory = $initialDirectory
+    $OpenFileDialog.filter = "CSV (*.csv)| *.csv"
+    $OpenFileDialog.ShowDialog() | Out-Null
+    $OpenFileDialog.filename
+}
+Get-FileName
+$inputdata =Read-Host "$(Get-FileName)"
+$inputcsv1=import-csv "$($inputdata)"#>
+
+Function Get-FileNamenew($initialDirectory)
+{
+Write-Host "Please select csv file extracted from Asset Register"
+
+    [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
+    
+    $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+    $OpenFileDialog.initialDirectory = $initialDirectory
+    $OpenFileDialog.filter = "CSV (*.csv)| *.csv"
+    $OpenFileDialog.ShowDialog() | Out-Null
+    $OpenFileDialog.filename
+}
+$b=Get-FileNamenew -initialDirectory $initialDirectory
+$inputdata1 =$b
+$inputcsv2=import-csv $b
+
+
+[int]$machines=Read-Host "Please enter the number of days for which you want to retain the machines"
+
+
+foreach($comp in $inputcsv1)
+{
+foreach($asset in $inputcsv2)
+   {
+    if($asset.Cname -eq $comp.Name)
+
+    {
+    
+    $comparedate = (get-date).AddDays(-$($machines)) 
+    $date=$comparedate | Get-Date -Format "dd/MM/yyyy hh:mm:ss"
+   
+
+   if($comp.Modified -lt $date)
+    
+      {
+        #$comp | Export-Csv [System.Environment+SpecialFolder]::Getfolderpath('Desktop')'+\Hardware Audit1.csv' -Force -Append
+
+        #$comp | Export-Csv -Path "$([environment]::Getfolderpath('Desktop'))\Hardware Audit1.csv" -Force -Append -NoTypeInformation
+
+        $myobject =[pscustomobject]@{Name=$comp.Name;Status=$asset.Status;Assigned=$asset.'User/Group Name';Type=$comp.Type;Description=$comp.Description;Modified=$comp.Modified}
+
+        $Draftcsv =$myobject | Export-Csv -Path "$([environment]::Getfolderpath('Desktop'))\Hardware Audit2.csv" -Force -Append -NoTypeInformation
+
+        Copy-Item -Path "$([environment]::Getfolderpath('Desktop'))\Hardware Audit2.csv" -Destination "$([environment]::Getfolderpath('Desktop'))\Hardware Audit.csv" -Force
+    
+      } 
+
+  else{}
+    }
+
+    else {}
+  }
+ 
+}
+
+
+  
+
 
